@@ -23,6 +23,7 @@ namespace HelloWorld
                     case "4": Lab4.Run(); break;
                     case "5": Lab5.Run(); break;
                     case "6": Lab6.Run(); break;
+                    case "7": Lab7.Run(); break;
                     default:
                         Console.WriteLine("Извините, но такой лабы в этом проекте нет.");
                         break;

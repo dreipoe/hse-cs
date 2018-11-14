@@ -37,6 +37,7 @@ namespace HelloWorld
                 Console.WriteLine("2. Напечатать матрицу.");
                 Console.WriteLine("3. Удалить первую строку с нулём.");
                 Console.WriteLine("0. Назад");
+                Console.Write(">>> ");
 
                 key = Console.ReadLine();
 
@@ -67,6 +68,7 @@ namespace HelloWorld
                 {
                     Console.WriteLine("1. Создать массив вручную.");
                     Console.WriteLine("2. Создать массив с помощью ДСЧ.");
+                    Console.Write(">>> ");
 
                     key2 = Console.ReadLine();
 
@@ -132,6 +134,7 @@ namespace HelloWorld
                 Console.WriteLine("1. Создать строку");
                 Console.WriteLine("2. Перевернуть чётные слова");
                 Console.WriteLine("0. Назад");
+                Console.Write(">>> ");
 
                 key = Console.ReadLine();
 

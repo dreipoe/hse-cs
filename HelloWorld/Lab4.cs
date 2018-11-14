@@ -157,6 +157,7 @@ namespace HelloWorld
             Console.WriteLine("4. Найти первый отрицательный элемент");
             Console.WriteLine("5. Выполнить сортировку");
             Console.WriteLine("0. Выход");
+            Console.Write(">>> ");
         }
     }
 }

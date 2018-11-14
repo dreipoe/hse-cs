@@ -14,6 +14,7 @@ namespace HelloWorld
                 Console.WriteLine("2. Работа с матрицами");
                 Console.WriteLine("3. Работа с \"рваными\" массивами");
                 Console.WriteLine("0. Выход");
+                Console.Write(">>> ");
 
                 key = Console.ReadLine();
 
