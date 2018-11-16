@@ -66,15 +66,17 @@ namespace HelloWorld
 
                 if (arr != null && arr.Length > 0)
                 {
-                    int[] tmp = new int[arr.Length - 1];
-
                     for (int i = 0; i < arr.Length; i++)
                         if (neg)
                             arr[i - 1] = arr[i];
                         else if (arr[i] < 0)
                             neg = true;
 
-                    if (!neg) Array.Resize(ref arr, arr.Length - 1);
+                    if (neg)
+                    {
+                        Console.WriteLine("Первый отрицательный элемент удалён.");
+                        Array.Resize(ref arr, arr.Length - 1);
+                    } else Console.WriteLine("В массиве нет отрицательных значений. Удалять нечего.");
                 }
                 else
                     Console.WriteLine("Массив ещё не заполнен!");
@@ -152,6 +154,10 @@ namespace HelloWorld
 
                         for (int row = 0; row < tmp.GetLength(0); row++)
                             tmp[row, n] = random.Next(-999, 999);
+
+                        for (int column = 0; column < n; column++)
+                            for (int row = 0; row < arr.GetLength(0); row++)
+                                tmp[row, column] = arr[row, column];
 
                         for (int column = n; column < arr.GetLength(1); column++)
                             for (int row = 0; row < arr.GetLength(0); row++)

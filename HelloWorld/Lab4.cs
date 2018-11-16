@@ -26,8 +26,7 @@ namespace HelloWorld
                     case "3": MoveToRight(); break;
                     case "4": FindFirstNeg(); break;
                     case "5": SelectSorting(); break;
-                    case "0":
-                        break;
+                    case "0": break;
                     default: Console.WriteLine("Команда не опознана"); break;
                 }
             } while (key != "0");
