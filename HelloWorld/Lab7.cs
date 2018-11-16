@@ -91,13 +91,15 @@ namespace HelloWorld
 
                 if (byte.TryParse(Console.ReadLine(), out byte n) && n > 0)
                 {
-                    Console.WriteLine("Введите строку 1.");
+                    Console.Write("Введите строку 1: ");
                     Bidirectional head = new Bidirectional(Console.ReadLine()), tmp = head, last = null;
 
                     for (byte i = 2; i <= n; i++)
                     {
-                        Console.WriteLine($"Введите строку {i}.");
+                        Console.Write($"Введите строку {i}: ");
                         last = new Bidirectional(Console.ReadLine(), tmp);
+                        tmp.next = last;
+
                         tmp = last;
                     }
 
@@ -119,23 +121,90 @@ namespace HelloWorld
 
                     do
                     {
-                        Console.Write($"{handle.field:f3} ");
+                        Console.WriteLine($"{handle.field:f3} ");
                         handle = handle.next;
-                    } while (handle != head);
-
-                    Console.WriteLine();
+                    } while (handle != null);
                 }
                 else Console.WriteLine("Список пуст.");
             }
 
-            public void AddOddStrings()
+            public Bidirectional AddOddStrings()
             {
-                Bidirectional handle, header = this;
+                Bidirectional insert, cursor = this, tmp = null;
 
-                while (false)
+                while (cursor != null)
                 {
-                    handle = null;
+                    Console.Write("Введите нечётную строку: ");
+
+                    insert = new Bidirectional(Console.ReadLine(), tmp, cursor);
+                    if (tmp != null) tmp.next = insert;
+                    cursor.pred = insert;
+                    tmp = cursor;
+                    cursor = cursor.next;
+
+                    Console.WriteLine("Вставили.");
                 }
+
+                return pred;
+            }
+        }
+
+        private class BinaryTree
+        {
+            public int field;
+            public BinaryTree left;
+            public BinaryTree right;
+
+            public static Random random = new Random();
+
+            public BinaryTree(int d)
+            {
+                field = d;
+            }
+
+            public static BinaryTree BornIdealTree()
+            {
+                BinaryTree me = null;
+                Console.Write("Высота дерева: ");
+
+                if (byte.TryParse(Console.ReadLine(), out byte deep))
+                {
+                    if (deep < 1)
+                        Console.WriteLine("Введённое число не является натуральным.");
+                    else if (deep > 24)
+                        Console.WriteLine("На столь большое дерево не хватит оперативной памяти. Операция не выполнена.");
+                    else
+                        me = CreateIdealTree(deep);
+                } else Console.WriteLine("Введённое значение не является натуральным числом либо число слишком большое.");
+
+                return me;
+            }
+
+            private static BinaryTree CreateIdealTree(int deep)
+            {
+                BinaryTree me = new BinaryTree(random.Next(-100, 100));
+                me.left = (deep > 1) ? CreateIdealTree(deep - 1) : null;
+                me.right = (deep > 1) ? CreateIdealTree(deep - 1) : null;
+
+                return me;
+            }
+
+            public void Print(int l = 0)
+            {
+                if (left != null) left.Print(l + 3);
+                Console.Write("\t");
+                for (int i = 0; i < l; i++) Console.Write(" ");
+                Console.WriteLine(field);
+                if (right != null) right.Print(l + 3);
+            }
+
+            public int FindMaxNumber(int max = int.MinValue)
+            {
+                max = (field > max) ? field : max;
+                max = (left != null) ? left.FindMaxNumber(max) : max;
+                max = (right != null) ? right.FindMaxNumber(max) : max;
+
+                return max;
             }
         }
 
@@ -196,19 +265,77 @@ namespace HelloWorld
                             break;
                     }
                 } catch (NullReferenceException) {
-                    Console.WriteLine("Список ещё не создан.");
+                    Console.WriteLine("Ошибка. Скорее всего, список ещё не создан.");
                 }
             } while (key != "0");
         }
 
         public static void Belist()
         {
-            Console.WriteLine("Ещё не готово.");
+            string key = string.Empty;
+            Bidirectional list = null;
+
+            do
+            {
+                Console.WriteLine("Работа с двунаправленным списком.");
+                Console.WriteLine("1. Создать список.");
+                Console.WriteLine("2. Распечатать список.");
+                Console.WriteLine("3. Добавить нечётные элементы.");
+                Console.WriteLine("0. Назад.");
+                Console.Write(">>> ");
+
+                key = Console.ReadLine();
+
+                try
+                {
+                    switch (key)
+                    {
+                        case "1": list = Bidirectional.Born(); break;
+                        case "2": list.Print(); break;
+                        case "3": list = list.AddOddStrings(); break;
+                        case "0": break;
+                        default:
+                            Console.WriteLine("Нет такого пункта в меню.");
+                            break;
+                    }
+                } catch (NullReferenceException) {
+                    Console.WriteLine("Ошибка. Скорее всего, список ещё не создан.");
+                }
+            } while (key != "0");
         }
 
         public static void Betree()
         {
-            Console.WriteLine("Ещё не готово.");
+            string key = string.Empty;
+            BinaryTree tree = null;
+
+            do
+            {
+                Console.WriteLine("Работа с бинарным деревом.");
+                Console.WriteLine("1. Создать дерево.");
+                Console.WriteLine("2. Распечатать дерево.");
+                Console.WriteLine("3. Найти максимальное число.");
+                Console.WriteLine("0. Назад.");
+                Console.Write(">>> ");
+
+                key = Console.ReadLine();
+
+                try
+                {
+                    switch (key)
+                    {
+                        case "1": tree = BinaryTree.BornIdealTree(); break;
+                        case "2": tree.Print(); break;
+                        case "3": Console.WriteLine($"Маскимальное число в дереве: {tree.FindMaxNumber()}"); break;
+                        case "0": break;
+                        default:
+                            Console.WriteLine("Нет такого пункта в меню.");
+                            break;
+                    }
+                } catch (NullReferenceException) {
+                    Console.WriteLine("Ошибка. Скорее всего, список ещё не создан.");
+                }
+            } while (key != "0");
         }
     }
 }
