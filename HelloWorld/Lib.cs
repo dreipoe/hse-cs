@@ -1,8 +1,9 @@
 ﻿using System;
+using static System.Console;
 
 namespace HelloWorld
 {
-    class Lib
+	static class Lib
     {
         public static int[] CreateArray(uint n = 0)
         {
@@ -29,11 +30,11 @@ namespace HelloWorld
         {
             for (int i = 0; i < arr2.Length; i++)
             {
-                Console.WriteLine($"Введите элемент {i}");
-                if (!int.TryParse(Console.ReadLine(), out arr2[i]))
+                WriteLine($"Введите элемент {i}");
+                if (!int.TryParse(ReadLine(), out arr2[i]))
                 {
                     arr2[i] = 0;
-                    Console.WriteLine("Не удалось распознать целое число. Элементу присвоено значение 0.");
+                    WriteLine("Не удалось распознать целое число. Элементу присвоено значение 0.");
                 }
             }
         }
@@ -43,11 +44,11 @@ namespace HelloWorld
             for (int i = 0; i < arr2.GetLength(0); i++)
                 for (int j = 0; j < arr2.GetLength(1); j++)
                 {
-                    Console.WriteLine($"Введите элемент [{i}, {j}]");
-                    if (!int.TryParse(Console.ReadLine(), out arr2[i, j]))
+                    WriteLine($"Введите элемент [{i}, {j}]");
+                    if (!int.TryParse(ReadLine(), out arr2[i, j]))
                     {
                         arr2[i, j] = 0;
-                        Console.WriteLine("Не удалось распознать целое число. Элементу присвоено значение 0.");
+                        WriteLine("Не удалось распознать целое число. Элементу присвоено значение 0.");
                     }
                 }
         }
@@ -57,11 +58,11 @@ namespace HelloWorld
             for (int i = 0; i < arr2.GetLength(0); i++)
                 for (int j = 0; j < arr2.GetLength(1); j++)
                 {
-                    Console.WriteLine($"Введите элемент [{i}, {j}]");
-                    if (!double.TryParse(Console.ReadLine(), out arr2[i, j]))
+                    WriteLine($"Введите элемент [{i}, {j}]");
+                    if (!double.TryParse(ReadLine(), out arr2[i, j]))
                     {
                         arr2[i, j] = 0;
-                        Console.WriteLine("Не удалось распознать число. Элементу присвоено значение 0.");
+                        WriteLine("Не удалось распознать число. Элементу присвоено значение 0.");
                     }
                 }
         }
@@ -71,77 +72,77 @@ namespace HelloWorld
             for (int i = 0; i < arr2.Length; i++)
                 for (int j = 0; j < arr2[i].Length; j++)
                 {
-                    Console.WriteLine($"Введите элемент [{i}][{j}]");
-                    if (!int.TryParse(Console.ReadLine(), out arr2[i][j]))
+                    WriteLine($"Введите элемент [{i}][{j}]");
+                    if (!int.TryParse(ReadLine(), out arr2[i][j]))
                     {
                         arr2[i][j] = 0;
-                        Console.WriteLine("Не удалось распознать целое число. Элементу присвоено значение 0.");
+                        WriteLine("Не удалось распознать целое число. Элементу присвоено значение 0.");
                     }
                 }
         }
 
         public static void PrintArray(ref int[] arr, byte factlen = 0)
         {
-            Console.Write("Состав массива: ");
+            Write("Состав массива: ");
             if (arr != null && factlen > 0)
-                for (byte i = 0; i < factlen; i++) Console.Write($"{arr[i]} ");
+                for (byte i = 0; i < factlen; i++) Write($"{arr[i]} ");
             else
-                Console.Write("пусто.");
-            Console.WriteLine();
+                Write("пусто.");
+            WriteLine();
         }
 
         public static void PrintArray(ref int[,] arr)
         {
-            Console.Write("Состав массива: ");
+            Write("Состав массива: ");
             if (arr != null)
             {
-                Console.WriteLine();
+                WriteLine();
                 for (int i = 0; i < arr.GetLength(0); i++)
                 {
                     for (int j = 0; j < arr.GetLength(1); j++)
-                        Console.Write($"{arr[i, j]}\t");
-                    Console.WriteLine();
+                        Write($"{arr[i, j]}\t");
+                    WriteLine();
                 }
             }
-            else Console.Write("пусто.");
+            else Write("пусто.");
 
-            Console.WriteLine();
+            WriteLine();
         }
 
         public static void PrintArray(ref double[,] arr)
         {
-            Console.Write("Состав массива: ");
+            Write("Состав массива: ");
             if (arr != null)
             {
-                Console.WriteLine();
+                WriteLine();
                 for (int i = 0; i < arr.GetLength(0); i++)
                 {
                     for (int j = 0; j < arr.GetLength(1); j++)
-                        Console.Write($"{arr[i, j]:f5}\t");
-                    Console.WriteLine();
+                        Write($"{arr[i, j]:f5}\t");
+                    WriteLine();
                 }
             }
-            else Console.Write("пусто.");
+            else Write("пусто.");
 
-            Console.WriteLine();
+            WriteLine();
         }
 
         public static void PrintArray(ref int[][] arr)
         {
-            Console.Write("Состав массива: ");
+            Write("Состав массива: ");
             if (arr != null)
             {
-                Console.WriteLine();
+                WriteLine();
                 for (int i = 0; i < arr.Length; i++)
                 {
                     for (int j = 0; j < arr[i].Length; j++)
-                        Console.Write($"{arr[i][j]}\t");
-                    Console.WriteLine();
+                        Write($"{arr[i][j]}\t");
+                    WriteLine();
                 }
             }
-            else Console.Write("пусто.");
+            else Write("пусто.");
 
-            Console.WriteLine();
+            WriteLine();
         }
 
         public static void RandomArrayFill(ref int[] arr2)
@@ -149,7 +150,7 @@ namespace HelloWorld
             Random random = new Random();
 
             for (int i = 0; i < arr2.Length; i++) arr2[i] = random.Next(-999, 999);
-            Console.WriteLine("Массив был заполнен случайными числами");
+            WriteLine("Массив был заполнен случайными числами");
         }
 
         public static void RandomArrayFill(ref int[,] arr2)
@@ -159,7 +160,7 @@ namespace HelloWorld
             for (int i = 0; i < arr2.GetLength(0); i++)
                 for (int j = 0; j < arr2.GetLength(1); j++)
                     arr2[i, j] = random.Next(-999, 999);
-            Console.WriteLine("Массив был заполнен случайными числами");
+            WriteLine("Массив был заполнен случайными числами");
         }
 
         public static void RandomArrayFill(ref double[,] arr2)
@@ -169,7 +170,7 @@ namespace HelloWorld
             for (int i = 0; i < arr2.GetLength(0); i++)
                 for (int j = 0; j < arr2.GetLength(1); j++)
                     arr2[i, j] = (random.NextDouble() - 0.5) * 2000;
-            Console.WriteLine("Массив был заполнен случайными числами");
+            WriteLine("Массив был заполнен случайными числами");
         }
 
         public static void RandomArrayFill(ref int[][] arr2)
@@ -179,7 +180,7 @@ namespace HelloWorld
             for (int i = 0; i < arr2.Length; i++)
                 for (int j = 0; j < arr2[i].Length; j++)
                     arr2[i][j] = random.Next(-999, 999);
-            Console.WriteLine("Массив был заполнен случайными числами");
+            WriteLine("Массив был заполнен случайными числами");
         }
 
         public static byte SecureInput(string message)
@@ -188,11 +189,11 @@ namespace HelloWorld
 
             do
             {
-                Console.Write(message);
-                check = byte.TryParse(Console.ReadLine(), out num);
+                Write(message);
+                check = byte.TryParse(ReadLine(), out num);
 
                 if (!check)
-                    Console.WriteLine("Введённая строка не является целым числом или выходит за диапазон (0 - 255). Повторите ввод.");
+                    WriteLine("Введённая строка не является целым числом или выходит за диапазон (0 - 255). Повторите ввод.");
             } while (!check);
 
             return num;

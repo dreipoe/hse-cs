@@ -1,8 +1,10 @@
 ﻿using System;
+using static System.Console;
+using static HelloWorld.Lib;
 
 namespace HelloWorld
 {
-    class Lab5
+	static class Lab5
     {
         public static void Run()
         {
@@ -10,13 +12,13 @@ namespace HelloWorld
 
             do
             {
-                Console.WriteLine("1. Работа с одномерными массивами");
-                Console.WriteLine("2. Работа с матрицами");
-                Console.WriteLine("3. Работа с \"рваными\" массивами");
-                Console.WriteLine("0. Выход");
-                Console.Write(">>> ");
+                WriteLine("1. Работа с одномерными массивами");
+                WriteLine("2. Работа с матрицами");
+                WriteLine("3. Работа с \"рваными\" массивами");
+                WriteLine("0. Выход");
+                Write(">>> ");
 
-                key = Console.ReadLine();
+                key = ReadLine();
 
                 switch (key)
                 {
@@ -25,7 +27,7 @@ namespace HelloWorld
                     case "3": Ragged(); break;
                     case "0": break;
                     default:
-                        Console.WriteLine("Такой команды нет.");
+                        WriteLine("Такой команды нет.");
                         break;
                 }
             } while (key != "0");
@@ -40,22 +42,22 @@ namespace HelloWorld
 
             do
             {
-                Console.WriteLine("1. Создать массив.");
-                Console.WriteLine("2. Напечатать массив.");
-                Console.WriteLine("3. Удалить первый отрицательный элемент.");
-                Console.WriteLine("0. Назад");
+                WriteLine("1. Создать массив.");
+                WriteLine("2. Напечатать массив.");
+                WriteLine("3. Удалить первый отрицательный элемент.");
+                WriteLine("0. Назад");
 
-                key1 = Console.ReadLine();
+                key1 = ReadLine();
                 vectorlen = (byte)((vector != null) ? vector.Length : 0);
 
                 switch (key1)
                 {
                     case "1": VectorFill(ref vector); break;
-                    case "2": Lib.PrintArray(ref vector, vectorlen); break;
+                    case "2": PrintArray(ref vector, vectorlen); break;
                     case "3": DeleteFirstNeg(ref vector); break;
                     case "0": break;
                     default:
-                        Console.WriteLine("Нет такого пункта.");
+                        WriteLine("Нет такого пункта.");
                         break;
                 }
             } while (key1 != "0");
@@ -74,12 +76,12 @@ namespace HelloWorld
 
                     if (neg)
                     {
-                        Console.WriteLine("Первый отрицательный элемент удалён.");
+                        WriteLine("Первый отрицательный элемент удалён.");
                         Array.Resize(ref arr, arr.Length - 1);
-                    } else Console.WriteLine("В массиве нет отрицательных значений. Удалять нечего.");
+                    } else WriteLine("В массиве нет отрицательных значений. Удалять нечего.");
                 }
                 else
-                    Console.WriteLine("Массив ещё не заполнен!");
+                    WriteLine("Массив ещё не заполнен!");
             }
         }
 
@@ -95,22 +97,22 @@ namespace HelloWorld
 
                 do
                 {
-                    Console.WriteLine("1. Создать массив вручную.");
-                    Console.WriteLine("2. Создать массив с помощью ДСЧ.");
+                    WriteLine("1. Создать массив вручную.");
+                    WriteLine("2. Создать массив с помощью ДСЧ.");
 
-                    key2 = Console.ReadLine();
+                    key2 = ReadLine();
 
                     switch (key2)
                     {
-                        case "1": Lib.ManualArrayFill(ref arr); break;
-                        case "2": Lib.RandomArrayFill(ref arr); break;
+                        case "1": ManualArrayFill(ref arr); break;
+                        case "2": RandomArrayFill(ref arr); break;
                         default:
-                            Console.WriteLine("Нет такого пункта.");
+                            WriteLine("Нет такого пункта.");
                             break;
                     }
                 } while (key2 != "1" && key2 != "2");
             }
-            else Console.WriteLine("Массив уже заполнен.");
+            else WriteLine("Массив уже заполнен.");
         }
 
         //Работа с матрицей
@@ -121,21 +123,21 @@ namespace HelloWorld
 
             do
             {
-                Console.WriteLine("1. Создать массив.");
-                Console.WriteLine("2. Напечатать массив.");
-                Console.WriteLine("3. Добавить столбец с заданным номером.");
-                Console.WriteLine("0. Назад");
+                WriteLine("1. Создать массив.");
+                WriteLine("2. Напечатать массив.");
+                WriteLine("3. Добавить столбец с заданным номером.");
+                WriteLine("0. Назад");
 
-                key1 = Console.ReadLine();
+                key1 = ReadLine();
 
                 switch (key1)
                 {
                     case "1": MatrixFill(ref matrix); break;
-                    case "2": Lib.PrintArray(ref matrix); break;
+                    case "2": PrintArray(ref matrix); break;
                     case "3": AddColumn(ref matrix); break;
                     case "0": break;
                     default:
-                        Console.WriteLine("Такой команды нет.");
+                        WriteLine("Такой команды нет.");
                         break;
                 }
             } while (key1 != "0");
@@ -144,7 +146,7 @@ namespace HelloWorld
             {
                 if (arr != null)
                 {
-                    byte n = Lib.SecureInput("С каким номером добавим столбец? ");
+                    byte n = SecureInput("С каким номером добавим столбец? ");
 
                     if (n <= arr.GetLength(1))
                     {
@@ -166,9 +168,9 @@ namespace HelloWorld
                         arr = tmp;
                     }
                     else
-                        Console.WriteLine("Номер столбца выходит за пределы матрицы.");
+                        WriteLine("Номер столбца выходит за пределы матрицы.");
                 }
-                else Console.WriteLine("Матрица ещё не создана!");
+                else WriteLine("Матрица ещё не создана!");
             }
         }
 
@@ -177,30 +179,30 @@ namespace HelloWorld
         {
             if (arr == null)
             {
-                byte rows = Lib.SecureInput("Введите количество строк в матрице: ");
-                byte columns = Lib.SecureInput("Введите количество столбцов в матрице: ");
+                byte rows = SecureInput("Введите количество строк в матрице: ");
+                byte columns = SecureInput("Введите количество столбцов в матрице: ");
                 arr = new int[rows, columns];
 
                 string key2 = "Y";
 
                 do
                 {
-                    Console.WriteLine("1. Создать массив вручную.");
-                    Console.WriteLine("2. Создать массив с помощью ДСЧ.");
+                    WriteLine("1. Создать массив вручную.");
+                    WriteLine("2. Создать массив с помощью ДСЧ.");
 
-                    key2 = Console.ReadLine();
+                    key2 = ReadLine();
 
                     switch (key2)
                     {
-                        case "1": Lib.ManualArrayFill(ref arr); break;
-                        case "2": Lib.RandomArrayFill(ref arr); break;
+                        case "1": ManualArrayFill(ref arr); break;
+                        case "2": RandomArrayFill(ref arr); break;
                         default:
-                            Console.WriteLine("Нет такого пункта.");
+                            WriteLine("Нет такого пункта.");
                             break;
                     }
                 } while (key2 != "1" && key2 != "2");
             }
-            else Console.WriteLine("Массив уже заполнен.");
+            else WriteLine("Массив уже заполнен.");
         }
 
         private static void Ragged()
@@ -210,21 +212,21 @@ namespace HelloWorld
 
             do
             {
-                Console.WriteLine("1. Создать массив.");
-                Console.WriteLine("2. Напечатать массив.");
-                Console.WriteLine("3. Удалить самую короткую строку.");
-                Console.WriteLine("0. Назад");
+                WriteLine("1. Создать массив.");
+                WriteLine("2. Напечатать массив.");
+                WriteLine("3. Удалить самую короткую строку.");
+                WriteLine("0. Назад");
 
-                key1 = Console.ReadLine();
+                key1 = ReadLine();
 
                 switch (key1)
                 {
                     case "1": RaggedFill(ref ragged); break;
-                    case "2": Lib.PrintArray(ref ragged); break;
+                    case "2": PrintArray(ref ragged); break;
                     case "3": DeleteShortestRow(ref ragged); break;
                     case "0": break;
                     default:
-                        Console.WriteLine("Такой команды нет.");
+                        WriteLine("Такой команды нет.");
                         break;
                 }
             } while (key1 != "0");
@@ -245,7 +247,7 @@ namespace HelloWorld
                     for (byte i = iShortest; i < arr.Length - 1; i++) arr[i] = arr[i + 1];
                     Array.Resize(ref arr, arr.Length - 1);
                 }
-                else Console.WriteLine("Массив пуст.");
+                else WriteLine("Массив пуст.");
             }
         }
 
@@ -259,32 +261,32 @@ namespace HelloWorld
 
                 do
                 {
-                    Console.WriteLine("1. Создать массив вручную.");
-                    Console.WriteLine("2. Создать массив с помощью ДСЧ.");
+                    WriteLine("1. Создать массив вручную.");
+                    WriteLine("2. Создать массив с помощью ДСЧ.");
 
-                    key2 = Console.ReadLine();
+                    key2 = ReadLine();
 
                     switch (key2)
                     {
-                        case "1": Lib.ManualArrayFill(ref arr); break;
-                        case "2": Lib.RandomArrayFill(ref arr); break;
+                        case "1": ManualArrayFill(ref arr); break;
+                        case "2": RandomArrayFill(ref arr); break;
                         default:
-                            Console.WriteLine("Нет такого пункта.");
+                            WriteLine("Нет такого пункта.");
                             break;
                     }
                 } while (key2 != "1" && key2 != "2");
             }
-            else Console.WriteLine("Массив уже заполнен.");
+            else WriteLine("Массив уже заполнен.");
 
             void ArrayInit(ref int[][] arr2)
             {
-                byte rows = Lib.SecureInput("Введите количество строк в рваном массиве: ");
+                byte rows = SecureInput("Введите количество строк в рваном массиве: ");
                 arr2 = new int[rows][];
 
                 byte rowlen = 0;
                 for (int i = 0; i < rows; i++)
                 {
-                    rowlen = Lib.SecureInput($"Введите длину строки {i}: ");
+                    rowlen = SecureInput($"Введите длину строки {i}: ");
                     arr2[i] = new int[rowlen];
                 }
             }

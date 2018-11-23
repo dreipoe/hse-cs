@@ -74,6 +74,7 @@ namespace HelloWorld
                 else Console.WriteLine("Массив уже содержит максимальное количество элементов.");
             }
 
+            //могло бы 
             void MoveToRight()
             {
                 Console.Write("На сколько элементов вправо нужно сдвинуть массив? ");
