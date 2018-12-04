@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28010.2041
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloWorld", "HelloWorld\HelloWorld.csproj", "{8D70D4FD-EEE5-4137-9679-B812C0768C08}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabLauncher", "LabLauncher\LabLauncher.csproj", "{A17077FD-6AB2-4FD9-B536-94456CFC7197}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,14 @@ Global
 		{8D70D4FD-EEE5-4137-9679-B812C0768C08}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8D70D4FD-EEE5-4137-9679-B812C0768C08}.Release|x64.ActiveCfg = Release|Any CPU
 		{8D70D4FD-EEE5-4137-9679-B812C0768C08}.Release|x64.Build.0 = Release|Any CPU
+		{A17077FD-6AB2-4FD9-B536-94456CFC7197}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A17077FD-6AB2-4FD9-B536-94456CFC7197}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A17077FD-6AB2-4FD9-B536-94456CFC7197}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A17077FD-6AB2-4FD9-B536-94456CFC7197}.Debug|x64.Build.0 = Debug|Any CPU
+		{A17077FD-6AB2-4FD9-B536-94456CFC7197}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A17077FD-6AB2-4FD9-B536-94456CFC7197}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A17077FD-6AB2-4FD9-B536-94456CFC7197}.Release|x64.ActiveCfg = Release|Any CPU
+		{A17077FD-6AB2-4FD9-B536-94456CFC7197}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
