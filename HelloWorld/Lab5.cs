@@ -61,28 +61,28 @@ namespace HelloWorld
                         break;
                 }
             } while (key1 != "0");
+        }
 
-            void DeleteFirstNeg(ref int[] arr)
+        private static void DeleteFirstNeg(ref int[] arr)
+        {
+            bool neg = false;
+
+            if (arr != null && arr.Length > 0)
             {
-                bool neg = false;
-
-                if (arr != null && arr.Length > 0)
-                {
-                    for (int i = 0; i < arr.Length; i++)
-                        if (neg)
-                            arr[i - 1] = arr[i];
-                        else if (arr[i] < 0)
-                            neg = true;
-
+                for (int i = 0; i < arr.Length; i++)
                     if (neg)
-                    {
-                        WriteLine("Первый отрицательный элемент удалён.");
-                        Array.Resize(ref arr, arr.Length - 1);
-                    } else WriteLine("В массиве нет отрицательных значений. Удалять нечего.");
-                }
-                else
-                    WriteLine("Массив ещё не заполнен!");
+                        arr[i - 1] = arr[i];
+                    else if (arr[i] < 0)
+                        neg = true;
+
+                if (neg)
+                {
+                    WriteLine("Первый отрицательный элемент удалён.");
+                    Array.Resize(ref arr, arr.Length - 1);
+                } else WriteLine("В массиве нет отрицательных значений. Удалять нечего.");
             }
+            else
+                WriteLine("Массив ещё не заполнен!");
         }
 
         //Заполняет одномерный массив
@@ -141,37 +141,37 @@ namespace HelloWorld
                         break;
                 }
             } while (key1 != "0");
+        }
 
-            void AddColumn(ref int[,] arr)
+        private static void AddColumn(ref int[,] arr)
+        {
+            if (arr != null)
             {
-                if (arr != null)
+                byte n = SecureInput("С каким номером добавим столбец? ");
+
+                if (n <= arr.GetLength(1))
                 {
-                    byte n = SecureInput("С каким номером добавим столбец? ");
+                    int[,] tmp = new int[arr.GetLength(0), arr.GetLength(1) + 1];
 
-                    if (n <= arr.GetLength(1))
-                    {
-                        int[,] tmp = new int[arr.GetLength(0), arr.GetLength(1) + 1];
+                    Random random = new Random();
 
-                        Random random = new Random();
+                    for (int row = 0; row < tmp.GetLength(0); row++)
+                        tmp[row, n] = random.Next(-999, 999);
 
-                        for (int row = 0; row < tmp.GetLength(0); row++)
-                            tmp[row, n] = random.Next(-999, 999);
+                    for (int column = 0; column < n; column++)
+                        for (int row = 0; row < arr.GetLength(0); row++)
+                            tmp[row, column] = arr[row, column];
 
-                        for (int column = 0; column < n; column++)
-                            for (int row = 0; row < arr.GetLength(0); row++)
-                                tmp[row, column] = arr[row, column];
+                    for (int column = n; column < arr.GetLength(1); column++)
+                        for (int row = 0; row < arr.GetLength(0); row++)
+                            tmp[row, column + 1] = arr[row, column];
 
-                        for (int column = n; column < arr.GetLength(1); column++)
-                            for (int row = 0; row < arr.GetLength(0); row++)
-                                tmp[row, column + 1] = arr[row, column];
-
-                        arr = tmp;
-                    }
-                    else
-                        WriteLine("Номер столбца выходит за пределы матрицы.");
+                    arr = tmp;
                 }
-                else WriteLine("Матрица ещё не создана!");
+                else
+                    WriteLine("Номер столбца выходит за пределы матрицы.");
             }
+            else WriteLine("Матрица ещё не создана!");
         }
 
         //Заполнение матрицы
@@ -230,25 +230,25 @@ namespace HelloWorld
                         break;
                 }
             } while (key1 != "0");
+        }
 
-            void DeleteShortestRow(ref int[][] arr)
+        private static void DeleteShortestRow(ref int[][] arr)
+        {
+            if (arr != null && arr.Length > 0)
             {
-                if (arr != null && arr.Length > 0)
-                {
-                    byte shortest = byte.MaxValue, iShortest = 0;
+                byte shortest = byte.MaxValue, iShortest = 0;
 
-                    for (byte i = 0; i < arr.Length; i++)
-                        if (arr[i].Length < shortest)
-                        {
-                            iShortest = i;
-                            shortest = (byte)arr[i].Length;
-                        }
+                for (byte i = 0; i < arr.Length; i++)
+                    if (arr[i].Length < shortest)
+                    {
+                        iShortest = i;
+                        shortest = (byte)arr[i].Length;
+                    }
 
-                    for (byte i = iShortest; i < arr.Length - 1; i++) arr[i] = arr[i + 1];
-                    Array.Resize(ref arr, arr.Length - 1);
-                }
-                else WriteLine("Массив пуст.");
+                for (byte i = iShortest; i < arr.Length - 1; i++) arr[i] = arr[i + 1];
+                Array.Resize(ref arr, arr.Length - 1);
             }
+            else WriteLine("Массив пуст.");
         }
 
         private static void RaggedFill(ref int[][] arr)
@@ -277,18 +277,18 @@ namespace HelloWorld
                 } while (key2 != "1" && key2 != "2");
             }
             else WriteLine("Массив уже заполнен.");
+        }
 
-            void ArrayInit(ref int[][] arr2)
+        private static void ArrayInit(ref int[][] arr2)
+        {
+            byte rows = SecureInput("Введите количество строк в рваном массиве: ");
+            arr2 = new int[rows][];
+
+            byte rowlen = 0;
+            for (int i = 0; i < rows; i++)
             {
-                byte rows = SecureInput("Введите количество строк в рваном массиве: ");
-                arr2 = new int[rows][];
-
-                byte rowlen = 0;
-                for (int i = 0; i < rows; i++)
-                {
-                    rowlen = SecureInput($"Введите длину строки {i}: ");
-                    arr2[i] = new int[rowlen];
-                }
+                rowlen = SecureInput($"Введите длину строки {i}: ");
+                arr2[i] = new int[rowlen];
             }
         }
     }

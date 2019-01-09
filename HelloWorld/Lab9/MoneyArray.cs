@@ -35,7 +35,8 @@ namespace HelloWorld
             for (int i = 0; i < _size; i++)
             {
                 Write(message);
-                if (double.TryParse(Console.ReadLine(), out double tmp))
+                double tmp;
+                if (double.TryParse(Console.ReadLine(), out tmp))
                 {
                     //округление
                     int rub = (int) tmp;

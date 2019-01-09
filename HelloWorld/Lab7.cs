@@ -19,7 +19,8 @@ namespace HelloWorld
             {
                 Console.Write("Количество элементов в списке: ");
 
-                if (byte.TryParse(Console.ReadLine(), out byte n) && n > 0)
+                byte n;
+                if (byte.TryParse(Console.ReadLine(), out n) && n > 0)
                 {
                     Random random = new Random();
 
@@ -89,7 +90,8 @@ namespace HelloWorld
             {
                 Console.Write("Количество элементов в списке: ");
 
-                if (byte.TryParse(Console.ReadLine(), out byte n) && n > 0)
+                byte n;
+                if (byte.TryParse(Console.ReadLine(), out n) && n > 0)
                 {
                     Console.Write("Введите строку 1: ");
                     Bidirectional head = new Bidirectional(Console.ReadLine()), tmp = head, last = null;
@@ -167,7 +169,8 @@ namespace HelloWorld
                 BinaryTree me = null;
                 Console.Write("Высота дерева: ");
 
-                if (byte.TryParse(Console.ReadLine(), out byte deep))
+                byte deep;
+                if (byte.TryParse(Console.ReadLine(), out deep))
                 {
                     if (deep < 1)
                         Console.WriteLine("Введённое число не является натуральным.");
@@ -205,6 +208,49 @@ namespace HelloWorld
                 max = (right != null) ? right.FindMaxNumber(max) : max;
 
                 return max;
+            }
+
+            public BinaryTree GetSortedTree()
+            {
+                BinaryTree sorted = new BinaryTree(field);
+                FetchElement(sorted);
+                return sorted;
+            }
+
+            private void FetchElement(BinaryTree root)
+            {
+                Add(root, field);
+                if (left != null) left.FetchElement(root);
+                if (right != null) right.FetchElement(root);
+            }
+
+            private static bool Add(BinaryTree root, int d)
+            {
+                BinaryTree p = root;
+                BinaryTree r = null;
+                bool ok = false;
+                while (p != null && !ok)
+                {
+                    r = p;
+                    if (d == p.field)
+                        ok = true;
+                    else if (d < p.field)
+                        p = p.left;
+                    else
+                        p = p.right;
+                }
+
+                if (ok)
+                    return false;
+
+                BinaryTree NewPoint = new BinaryTree(d);
+
+                if (d < r.field)
+                    r.left = NewPoint;
+                else
+                    r.right = NewPoint;
+
+                return true;
             }
         }
 
@@ -306,7 +352,7 @@ namespace HelloWorld
 
         public static void Betree()
         {
-            string key = string.Empty;
+            string key = "";
             BinaryTree tree = null;
 
             do
@@ -315,6 +361,7 @@ namespace HelloWorld
                 Console.WriteLine("1. Создать дерево.");
                 Console.WriteLine("2. Распечатать дерево.");
                 Console.WriteLine("3. Найти максимальное число.");
+                Console.WriteLine("4. Преобразовать в дерево поиска.");
                 Console.WriteLine("0. Назад.");
                 Console.Write(">>> ");
 
@@ -327,6 +374,7 @@ namespace HelloWorld
                         case "1": tree = BinaryTree.BornIdealTree(); break;
                         case "2": tree.Print(); break;
                         case "3": Console.WriteLine($"Маскимальное число в дереве: {tree.FindMaxNumber()}"); break;
+                        case "4": tree = tree.GetSortedTree(); break;
                         case "0": break;
                         default:
                             Console.WriteLine("Нет такого пункта в меню.");

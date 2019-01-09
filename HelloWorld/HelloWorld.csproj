@@ -69,7 +69,6 @@
     <Compile Include="Lab5.cs" />
     <Compile Include="Lab6.cs" />
     <Compile Include="Lab7.cs" />
-    <Compile Include="Lab8.cs" />
     <Compile Include="Lab9\Lab9.cs" />
     <Compile Include="Lab9\MoneyArray.cs" />
     <Compile Include="Lib.cs" />

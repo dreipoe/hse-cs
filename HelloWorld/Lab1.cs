@@ -35,7 +35,8 @@ namespace HelloWorld
             Console.WriteLine("Пункт 4.");
 
             Console.Write("x? ");
-            if (float.TryParse(Console.ReadLine(), out float x))
+            float x;
+            if (float.TryParse(Console.ReadLine(), out x))
             {
                 float check = (float)Math.Pow(x, 3) - x;
 
@@ -59,12 +60,14 @@ namespace HelloWorld
             Console.WriteLine($"Пункт {i}.");
 
             Console.Write("m? ");
-            if (int.TryParse(Console.ReadLine(), out int m))
+            int m;
+            if (int.TryParse(Console.ReadLine(), out m))
                 Console.Write("n? ");
             else
                 correct = false;
 
-            if (correct && int.TryParse(Console.ReadLine(), out int n))
+            int n;
+            if (correct && int.TryParse(Console.ReadLine(), out n))
                 switch (i)
                 {
                     case 1:
@@ -89,7 +92,8 @@ namespace HelloWorld
             bool correct = true;
 
             Console.Write("x? ");
-            if (float.TryParse(Console.ReadLine(), out float x))
+            float x;
+            if (float.TryParse(Console.ReadLine(), out x))
             {
                 Console.Write("y? ");
             }
@@ -98,7 +102,8 @@ namespace HelloWorld
                 correct = false;
             }
 
-            if (correct && float.TryParse(Console.ReadLine(), out float y))
+            float y;
+            if (correct && float.TryParse(Console.ReadLine(), out y))
             {
                 bool result = (x >= -7) && (x <= 0) && (y <= 0) && (y >= -1);
 

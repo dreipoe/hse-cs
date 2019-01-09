@@ -1,35 +1,24 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System;
 
-namespace LabLauncher.Lab8
+namespace LabLauncher
 {
-    struct Record
+    public class Record
     {
-        private int id;
+        protected int id;
 
-        private byte month {
+        protected byte month {
             get { return month; }
 
             set
             {
                 if (value >= 1 && value <= 12)
-                {
                     month = value;
-                }
                 else
-                {
                     throw new OverflowException();
-                }
             }
         }
 
-        private ushort year;
-        private uint profit {
-            get { return profit / 100; }
-            set { profit = value; }
-        }
+        protected ushort year;
+        protected uint profit;
     }
 }

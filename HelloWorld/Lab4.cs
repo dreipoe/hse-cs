@@ -4,13 +4,14 @@ namespace HelloWorld
 {
     class Lab4
     {
+        protected static int[] arr;
+        protected static byte n, nd;
+
         public static void Run()
         {
-            byte n;
-
             n = Lib.SecureInput("Кол-во элементов массива (0 - выход)? ");
-            int[] arr = Lib.CreateArray(n);
-            byte nd = n;
+            arr = Lib.CreateArray(n);
+            nd = n;
             string key = "Y";
 
             do
@@ -30,122 +31,123 @@ namespace HelloWorld
                     default: Console.WriteLine("Команда не опознана"); break;
                 }
             } while (key != "0");
+        }
 
-            void deleteMinNumber()
+        public static void deleteMinNumber()
+        {
+            if (nd > 0)
             {
-                if (nd > 0)
-                {
-                    byte iMin = 0;
-                    int min = arr[0];
+                byte iMin = 0;
+                int min = arr[0];
 
-                    for (byte i = 1; i < nd; i++)
+                for (byte i = 1; i < nd; i++)
+                {
+                    if (min > arr[i])
                     {
-                        if (min > arr[i])
-                        {
-                            min = arr[i];
-                            iMin = i;
-                        }
+                        min = arr[i];
+                        iMin = i;
                     }
-
-                    for (byte i = iMin; i < (nd - 1); i++) arr[i] = arr[i + 1];
-                    arr[nd - 1] = 0;
-                    nd--;
-
-                    Console.WriteLine("Элемент удалён.");
                 }
-                else Console.WriteLine("Массив пуст. Удалять нечего.");
+
+                for (byte i = iMin; i < (nd - 1); i++) arr[i] = arr[i + 1];
+                arr[nd - 1] = 0;
+                nd--;
+
+                Console.WriteLine("Элемент удалён.");
             }
+            else Console.WriteLine("Массив пуст. Удалять нечего.");
+        }
 
-            void AddToEnd()
+        public static void AddToEnd()
+        {
+            if (nd < n)
             {
-                if (nd < n)
+                byte k = Lib.SecureInput("Сколько элементов нужно добавить? ");
+
+                if ((nd + k) <= n)
                 {
-                    byte k = Lib.SecureInput("Сколько элементов нужно добавить? ");
-
-                    if ((nd + k) <= n)
-                    {
-                        Random random = new Random();
-                        for (byte i = nd; i < (nd + k); i++) arr[i] = random.Next(-50, 50);
-                        nd += k;
-                    }
-                    else
-                        Console.WriteLine("В массиве недостаточно места.");
-                }
-                else Console.WriteLine("Массив уже содержит максимальное количество элементов.");
-            }
-
-            //могло бы 
-            void MoveToRight()
-            {
-                Console.Write("На сколько элементов вправо нужно сдвинуть массив? ");
-
-                if (uint.TryParse(Console.ReadLine(), out uint m))
-                {
-                    m %= nd;
-                    uint border = nd - m;
-                    uint rmid = m / 2;
-                    uint lmid = border / 2;
-
-                    for (uint i = 0; i < rmid; i++)
-                        Lib.Swap(ref arr[border + i], ref arr[nd - 1 - i]);
-                    for (uint i = 0; i < lmid; i++)
-                        Lib.Swap(ref arr[i], ref arr[border - 1 - i]);
-                    for (uint i = 0; i < (nd / 2); i++)
-                        Lib.Swap(ref arr[i], ref arr[nd - 1 - i]);
-
-                    Console.WriteLine("Массив сдвинут.");
+                    Random random = new Random();
+                    for (byte i = nd; i < (nd + k); i++) arr[i] = random.Next(-50, 50);
+                    nd += k;
                 }
                 else
-                {
-                    Console.WriteLine("Что-то пошло не так. Повторите ввод.");
-                }
+                    Console.WriteLine("В массиве недостаточно места.");
             }
+            else Console.WriteLine("Массив уже содержит максимальное количество элементов.");
+        }
 
-            void FindFirstNeg()
+
+        public static void MoveToRight()
+        {
+            Console.Write("На сколько элементов вправо нужно сдвинуть массив? ");
+
+            uint m;
+            if (uint.TryParse(Console.ReadLine(), out m))
             {
-                bool found = false;
-                uint iNeg = 0;
-                int fNeg = 0;
+                m %= nd;
+                uint border = nd - m;
+                uint rmid = m / 2;
+                uint lmid = border / 2;
 
-                for (uint i = 0; i < nd && !found; i++)
-                    if (arr[i] < 0)
+                for (uint i = 0; i < rmid; i++)
+                    Lib.Swap(ref arr[border + i], ref arr[nd - 1 - i]);
+                for (uint i = 0; i < lmid; i++)
+                    Lib.Swap(ref arr[i], ref arr[border - 1 - i]);
+                for (uint i = 0; i < (nd / 2); i++)
+                    Lib.Swap(ref arr[i], ref arr[nd - 1 - i]);
+
+                Console.WriteLine("Массив сдвинут.");
+            }
+            else
+            {
+                Console.WriteLine("Что-то пошло не так. Повторите ввод.");
+            }
+        }
+
+        public static void FindFirstNeg()
+        {
+            bool found = false;
+            uint iNeg = 0;
+            int fNeg = 0;
+
+            for (uint i = 0; i < nd && !found; i++)
+                if (arr[i] < 0)
+                {
+                    iNeg = i;
+                    fNeg = arr[i];
+                    found = true;
+                }
+
+            if (found)
+            {
+                Console.WriteLine("Первый отрициальный элемент");
+                Console.WriteLine($"Индекс: {iNeg}");
+                Console.WriteLine($"Значение: {fNeg}");
+            }
+            else Console.WriteLine("В этом массиве нет отрицательных значений");
+        }
+
+        public static void SelectSorting()
+        {
+            uint iMin; int min;
+
+            for (uint i = 0; i < nd; i++)
+            {
+                iMin = i;
+                min = int.MaxValue;
+
+                for (uint j = i; j < nd; j++)
+                    if (arr[j] < min)
                     {
-                        iNeg = i;
-                        fNeg = arr[i];
-                        found = true;
+                        iMin = j;
+                        min = arr[j];
                     }
 
-                if (found)
-                {
-                    Console.WriteLine("Первый отрициальный элемент");
-                    Console.WriteLine($"Индекс: {iNeg}");
-                    Console.WriteLine($"Значение: {fNeg}");
-                }
-                else Console.WriteLine("В этом массиве нет отрицательных значений");
+                if (i != iMin)
+                    Lib.Swap(ref arr[i], ref arr[iMin]);
             }
 
-            void SelectSorting()
-            {
-                uint iMin; int min;
-
-                for (uint i = 0; i < nd; i++)
-                {
-                    iMin = i;
-                    min = int.MaxValue;
-
-                    for (uint j = i; j < nd; j++)
-                        if (arr[j] < min)
-                        {
-                            iMin = j;
-                            min = arr[j];
-                        }
-
-                    if (i != iMin)
-                        Lib.Swap(ref arr[i], ref arr[iMin]);
-                }
-
-                Console.WriteLine("Массив отсортирован");
-            }
+            Console.WriteLine("Массив отсортирован");
         }
 
         private static void PrintMenu()

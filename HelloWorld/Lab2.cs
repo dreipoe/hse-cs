@@ -30,7 +30,8 @@ namespace HelloWorld
         {
             Console.Write("Длина последовательности: ");
 
-            if (int.TryParse(Console.ReadLine(), out int n))
+            int n;
+            if (int.TryParse(Console.ReadLine(), out n))
             {
                 int sum = 0, a;
 
@@ -59,12 +60,14 @@ namespace HelloWorld
             bool correct = true;
 
             Console.Write("k1: ");
-            if (int.TryParse(Console.ReadLine(), out int k1))
+            int k1;
+            if (int.TryParse(Console.ReadLine(), out k1))
                 Console.Write("k2: ");
             else
                 correct = false;
 
-            if (correct && int.TryParse(Console.ReadLine(), out int k2))
+            int k2;
+            if (correct && int.TryParse(Console.ReadLine(), out k2))
             {
                 while (a != 0)
                 {
@@ -88,7 +91,8 @@ namespace HelloWorld
         {
             Console.Write("Количество слагаемых: ");
 
-            if (int.TryParse(Console.ReadLine(), out int n))
+            int n;
+            if (int.TryParse(Console.ReadLine(), out n))
             {
                 int sum = 0;
                 int a = 1;
