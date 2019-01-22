@@ -8,9 +8,10 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>HelloWorld</RootNamespace>
     <AssemblyName>HelloWorld</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -69,6 +70,8 @@
     <Compile Include="Lab5.cs" />
     <Compile Include="Lab6.cs" />
     <Compile Include="Lab7.cs" />
+    <Compile Include="Lab8\Lab8.cs" />
+    <Compile Include="Lab8\Record.cs" />
     <Compile Include="Lab9\Lab9.cs" />
     <Compile Include="Lab9\MoneyArray.cs" />
     <Compile Include="Lib.cs" />

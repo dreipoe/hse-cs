@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LabLauncher
+namespace HelloWorld
 {
     [Serializable]
     public class Record
@@ -8,7 +8,7 @@ namespace LabLauncher
         public enum month { jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec }
 
         public month mm { get; }
-        public int year { get; }
+        public uint year { get; }
         public string unit { get; }
         public uint profit { get; }
 
@@ -34,13 +34,13 @@ namespace LabLauncher
             }
         }
 
-        public int[] key
+        public uint[] key
         {
             get
             {
-                return new int[]
+                return new uint[]
                 {
-                    (int)mm,
+                    (uint)mm,
                     year
                 };
             }
@@ -54,7 +54,7 @@ namespace LabLauncher
             }
         }
 
-        public Record(month a, int b, string c, uint prof)
+        public Record(month a, uint b, string c, uint prof)
         {
             mm = a;
             year = b;
