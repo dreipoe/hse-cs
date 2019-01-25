@@ -1,4 +1,4 @@
-﻿using System;
+﻿using static System.Console;
 
 namespace HelloWorld
 {
@@ -10,8 +10,8 @@ namespace HelloWorld
 
             do
             {
-                Console.Write("Введите номер задачи для её запуска (0 - назад): ");
-                key = Console.ReadLine();
+                Write("Введите номер задачи для её запуска (0 - назад): ");
+                key = ReadLine();
 
                 switch (key)
                 {
@@ -20,7 +20,7 @@ namespace HelloWorld
                     case "2": Lab2Task2(); break;
                     case "3": Lab2Task3(); break;
                     default:
-                        Console.WriteLine("Извините, но такой задачи в этой лаб. работе нет.");
+                        WriteLine("Извините, но такой задачи в этой лаб. работе нет.");
                         break;
                 }
             } while (key != "0");
@@ -28,28 +28,28 @@ namespace HelloWorld
 
         private static void Lab2Task1()
         {
-            Console.Write("Длина последовательности: ");
+            Write("Длина последовательности: ");
 
             int n;
-            if (int.TryParse(Console.ReadLine(), out n))
+            if (int.TryParse(ReadLine(), out n))
             {
                 int sum = 0, a;
 
                 for (int i = 1; i <= n; i++)
                 {
-                    Console.Write("Введите следующее число последовательности: ");
+                    Write("Введите следующее число последовательности: ");
 
-                    while (!int.TryParse(Console.ReadLine(), out a))
-                        Console.WriteLine("Число не опознано, повторите ввод.");
+                    while (!int.TryParse(ReadLine(), out a))
+                        WriteLine("Число не опознано, повторите ввод.");
 
                     if (i % 2 == 0) sum += a;
                 }
 
-                Console.WriteLine($"Сумма чётных элементов последовательности: {sum}.");
+                WriteLine($"Сумма чётных элементов последовательности: {sum}.");
             }
             else
             {
-                Console.WriteLine("Это не целое число.");
+                WriteLine("Это не целое число.");
             }
         }
 
@@ -59,40 +59,40 @@ namespace HelloWorld
             int i = 0;
             bool correct = true;
 
-            Console.Write("k1: ");
+            Write("k1: ");
             int k1;
-            if (int.TryParse(Console.ReadLine(), out k1))
-                Console.Write("k2: ");
+            if (int.TryParse(ReadLine(), out k1))
+                Write("k2: ");
             else
                 correct = false;
 
             int k2;
-            if (correct && int.TryParse(Console.ReadLine(), out k2))
+            if (correct && int.TryParse(ReadLine(), out k2))
             {
                 while (a != 0)
                 {
-                    Console.Write("Введите следующее число последовательности (0 - выход): ");
+                    Write("Введите следующее число последовательности (0 - выход): ");
 
-                    if (int.TryParse(Console.ReadLine(), out a))
+                    if (int.TryParse(ReadLine(), out a))
                     {
                         if ((a % k1 == 0) && (a % k2 != 0)) i++;
                     }
 
-                    Console.WriteLine($"Во введённой последовательности уже {i} чис(ел), удовлетворяющих условию.");
+                    WriteLine($"Во введённой последовательности уже {i} чис(ел), удовлетворяющих условию.");
                 }
             }
             else
             {
-                Console.WriteLine("Это не целое число.");
+                WriteLine("Это не целое число.");
             }
         }
 
         private static void Lab2Task3()
         {
-            Console.Write("Количество слагаемых: ");
+            Write("Количество слагаемых: ");
 
             int n;
-            if (int.TryParse(Console.ReadLine(), out n))
+            if (int.TryParse(ReadLine(), out n))
             {
                 int sum = 0;
                 int a = 1;
@@ -102,11 +102,11 @@ namespace HelloWorld
                     a += 2;
                     n--;
                 } while (n > 0);
-                Console.WriteLine($"Результат: {sum}");
+                WriteLine($"Результат: {sum}");
             }
             else
             {
-                Console.WriteLine("Это не целое число.");
+                WriteLine("Это не целое число.");
             }
         }
     }

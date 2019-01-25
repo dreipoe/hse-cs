@@ -8,9 +8,9 @@ namespace HelloWorld
         public enum month { jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec }
 
         public month mm { get; }
-        public uint year { get; }
+        public int year { get; }
         public string unit { get; }
-        public uint profit { get; }
+        public int profit { get; }
 
         public string monthname
         {
@@ -34,13 +34,13 @@ namespace HelloWorld
             }
         }
 
-        public uint[] key
+        public int[] key
         {
             get
             {
-                return new uint[]
+                return new int[]
                 {
-                    (uint)mm,
+                    (int)mm,
                     year
                 };
             }
@@ -50,11 +50,11 @@ namespace HelloWorld
         {
             get
             {
-                return $"{monthname} {year}, {unit}, €{profit}";
+                return $"{monthname} {year}, {unit}, {profit} евро";
             }
         }
 
-        public Record(month a, uint b, string c, uint prof)
+        public Record(month a, int b, string c, int prof)
         {
             mm = a;
             year = b;

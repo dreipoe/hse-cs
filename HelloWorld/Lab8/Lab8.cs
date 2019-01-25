@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 using static System.Console;
 
@@ -28,12 +27,13 @@ namespace HelloWorld
                 WriteLine("0. Выход");
                 Write("> ");
 
-                key = ReadLine();
+                key = ReadLine().ToLower();
 
                 switch (key)
                 {
                     case "1": Work(); break;
                     case "2": Open(); break;
+                    case "generator": generator(); break;
                     case "0": break;
                     default:
                         WriteLine("Нет такого пункта в меню.");
@@ -42,6 +42,7 @@ namespace HelloWorld
             } while (key != "0");
         }
 
+        //работа с файлом
         private static void Work()
         {
             string key;
@@ -53,6 +54,9 @@ namespace HelloWorld
                 WriteLine("1. Добавить запись");
                 WriteLine("2. Изменить запись");
                 WriteLine("3. Удалить запись");
+                WriteLine("4. Сохранить файл");
+                WriteLine("5. Определить самый прибыльный год");
+                WriteLine("6. Определить самый длинный период с доходами ниже среднего");
                 WriteLine("0. Закрыть файл");
                 Write("> ");
 
@@ -60,48 +64,61 @@ namespace HelloWorld
 
                 switch (key)
                 {
-                    case "1": break;
-                    case "2": break;
-                    case "3": break;
-                    case "0": break;
+                    case "1": AddRecord(); break;
+                    case "2": AddRecord(true); break;
+                    case "3": deleteRecord(); break;
+                    case "4": saveFile(); break;
+                    case "5": mostProfitableYear(); break;
+                    case "6": longest(); break;
+                    case "0": if (changed) changedFile(); break;
                     default:
                         WriteLine("Нет такого пункта в меню.");
                         break;
                 }
             } while (key != "0");
+
+            filename = "Notname";
+            db = new List<Record>();
         }
 
-        private static void AddRecord()
+        //диалог добавления/изменения записи в файл
+        private static void AddRecord(bool edit = false)
         {
+            int id = 0, month, year, profit;
             string str, unit;
-            uint month, year, profit;
-            do
-            {
+
+            if (edit)
+                do {
+                    id = SecureInput("Введите номер записи для редактирования: ");
+                    if (id >= db.Count) WriteLine("Такого элемента в файле нет.");
+                } while (id >= db.Count);
+
+            do {
                 Write("Введите номер или название месяца на русском: ");
                 str = ReadLine();
-            } while (!uint.TryParse(str, out month) && !TryParseMonth(str, out month) && (month < 0) && (month >= 12));
+            } while (!int.TryParse(str, out month) && !TryParseMonth(str, out month) && (month < 0) && (month >= 12));
 
-            do
-            {
-                Write("Введите год: ");
-            } while (!uint.TryParse(ReadLine(), out year));
+            year = SecureInput("Введите год: ");
 
             Write("Введите название подразделения: ");
             unit = ReadLine();
 
-            do
-            {
-                Write("Сколько евро заработало это подразделение? ");
-            } while (!uint.TryParse(ReadLine(), out profit));
+            profit = SecureInput("Сколько евро заработало это подразделение? ");
 
             Record record = new Record((Record.month)month, year, unit, profit);
-            db.Add(record);
+
+            if (edit) {
+                db.RemoveAt(id);
+                db.Insert(id, record);
+            } else db.Add(record);
+
+            changed = true;
         }
 
-        private static bool TryParseMonth(string month, out uint code)
+        //преобразует название месяца на русском в код месяца
+        private static bool TryParseMonth(string month, out int code)
         {
-            switch (month.ToLower())
-            {
+            switch (month.ToLower()) {
                 case "январь": code = 0; return true;
                 case "февраль": code = 1; return true;
                 case "март": code = 2; return true;
@@ -118,22 +135,135 @@ namespace HelloWorld
             }
         }
 
+        //Удаляет запись из файла
+        private static void deleteRecord()
+        {
+            int id;
+            id = SecureInput("Введите номер записи, чтобы удалить её: ");
+            db.RemoveAt(id);
+            changed = true;
+        }
+
+        private static void changedFile()
+        {
+            Write("Сохранить файл? (Y/N): ");
+            string key = ReadLine().ToUpper();
+            if (key == "Y") saveFile();
+        }
+
+        //Сохранение файла
+        //TODO: Здесь не хватает обработки исключений, стоит добавить
+        private static void saveFile()
+        {
+            Write("Под каким именем нужно сохранить файл? ");
+            string file = ReadLine();
+
+            FileInfo fileinfo = new FileInfo($"{file}.db");
+            if (fileinfo.Exists) {
+                Write("Такой файл уже существует. Перезаписать его? (Y/N): ");
+                if (ReadLine().ToUpper() != "Y") return;
+            }
+
+            FileStream f1 = new FileStream($"{file}.db", FileMode.Create);
+            BinaryFormatter bf = new BinaryFormatter();
+            bf.Serialize(f1, db);
+            f1.Close();
+
+            filename = file;
+        }
+
+        //определяет самый прибыльный год для каждого подразделения
+        private static void mostProfitableYear()
+        {
+            Write("Эта функция пока недоступна");
+        }
+
+        //определяет самый длинный период с доходом ниже среднего для каждого подразделения
+        private static void longest()
+        {
+            Write("Эта функция пока недоступна");
+        }
+
+        //Печатает в консоли содержимое файла
         private static void printDB()
         {
             if (db.Count != 0)
             {
                 WriteLine();
-                foreach (Record row in db)
-                {
-                    WriteLine(row.row);
-                }
+                for (int i = 0; i < db.Count; i++)
+                    WriteLine($"Ячейка {i}: {db[i].row}");
             }
             else WriteLine("пусто.");
         }
 
         private static void Open()
         {
+            bool exists;
+            string file;
+            FileInfo fileinfo;
 
+            do
+            {
+                Write("Под каким именем нужно открыть файл? (0 - назад): ");
+                file = ReadLine();
+                fileinfo = new FileInfo($"{file}.db");
+                exists = fileinfo.Exists;
+            } while (file != "0" && !exists);
+
+            if (file != "0")
+            {
+                FileStream f1 = new FileStream($"{file}.db", FileMode.Open);
+                BinaryFormatter bf = new BinaryFormatter();
+                db = (List<Record>)bf.Deserialize(f1);
+                filename = file;
+                changed = false;
+                f1.Close();
+                Work();
+            }   
+        }
+
+        //Чит-код, генерирует файл базы данных по умолчанию
+        private static void generator()
+        {
+            Write("Внимание! Вы запустили чит-код, который сгенерирует файл по умолчанию. Вы действительно хотите этого? (Y/N): ");
+            string key = ReadLine().ToUpper();
+
+            if (key == "Y")
+            {
+                List<Record> dflt = new List<Record>();
+                Random rnd = new Random();
+                int profit1, profit2;
+
+                for (int year = 2007; year <= 2009; year++)
+                    for (int month = 0; month < 12; month++)
+                    {
+                        profit1 = (year == 2007) ? rnd.Next(500, 2000) : (int)(rnd.Next(500, 2000) * 1.32);
+                        profit2 = rnd.Next(750, 3000);
+                        dflt.Add(new Record((Record.month)month, year, "Эмо", profit1));
+                        dflt.Add(new Record((Record.month)month, year, "Панк", profit2));
+                    }
+
+                FileStream f1 = new FileStream("default.db", FileMode.Create);
+                BinaryFormatter bf = new BinaryFormatter();
+                bf.Serialize(f1, dflt);
+                f1.Close();
+            }
+        }
+
+        private static int SecureInput(string message)
+        {
+            int num; bool check;
+
+            do
+            {
+                Write(message);
+                check = int.TryParse(ReadLine(), out num);
+
+                if (!check)
+                    WriteLine("Введённая строка не является натуральным числом или выходит за диапазон типа unit. Повторите ввод.");
+            } while (!check);
+
+            return num;
         }
     }
 }

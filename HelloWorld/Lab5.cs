@@ -90,7 +90,7 @@ namespace HelloWorld
         {
             if (arr == null)
             {
-                byte n = Lib.SecureInput("Введите количество элементов в массиве: ");
+                byte n = SecureInput("Введите количество элементов в массиве: ");
                 arr = new int[n];
 
                 string key2 = "Y";
