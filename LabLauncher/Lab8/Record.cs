@@ -7,6 +7,7 @@ namespace LabLauncher
     {
         public enum month { jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec }
 
+        public int number { get; }
         public month mm { get; }
         public int year { get; }
         public string unit { get; }
@@ -34,15 +35,11 @@ namespace LabLauncher
             }
         }
 
-        public int[] key
+        public string key
         {
             get
             {
-                return new int[]
-                {
-                    (int)mm,
-                    year
-                };
+                return $"{mm}.{year}";
             }
         }
 

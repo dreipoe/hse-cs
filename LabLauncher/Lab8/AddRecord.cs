@@ -55,11 +55,22 @@ namespace LabLauncher
             }
             else
             {
-                int[] key = new int[] { month, year };
+                Record.month monthenum = (Record.month)month;
+                string key = $"{monthenum}.{year}";
 
                 if (!isDuplicateKey(key))
                 {
-                    record = new Record((Record.month)month, year, unitField.Text, profit);
+                    record = new Record(monthenum, year, unitField.Text, profit);
+
+                    if (sender.Equals(addToBegin))
+                    {
+                        db.Insert(0, record);
+                    }
+                    else if (sender.Equals(addToEnd))
+                    {
+                        db.Add(record);
+                    }
+
                     DialogResult = DialogResult.OK;
                 }
                 else
@@ -74,12 +85,7 @@ namespace LabLauncher
             }
         }
 
-        public Record getRecord()
-        {
-            return record;
-        }
-
-        protected bool isDuplicateKey(int[] key)
+        protected bool isDuplicateKey(string key)
         {
             bool duplicate = false;
 

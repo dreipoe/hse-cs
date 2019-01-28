@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -8,7 +7,6 @@ using System.Windows.Forms;
 
 namespace LabLauncher
 {
-    //TODO: Программа недоработана, не хочет отображать данные из списка, а с ArrayList высвечивает только первый элемент
     public partial class Lab8 : Form
     {
         public string filename = "Notname";
@@ -29,7 +27,7 @@ namespace LabLauncher
 
         private void RefreshList()
         {
-            recordList.DataSource = db;
+            recordList.DataSource = db.ToArray();
             recordList.DisplayMember = "row";
         }
 
@@ -38,6 +36,7 @@ namespace LabLauncher
             Close();
         }
 
+        //Создать новый файл
         private void CreateFile_Click(object sender, EventArgs e)
         {
             if (changed)
@@ -63,8 +62,6 @@ namespace LabLauncher
 
             if (addrecord.ShowDialog() == DialogResult.OK)
             {
-                Record result = addrecord.getRecord();
-                db.Add(result);
                 RefreshList();
             }
         }
@@ -77,8 +74,6 @@ namespace LabLauncher
 
             if (addrecord.ShowDialog() == DialogResult.OK)
             {
-                Record result = addrecord.getRecord();
-                db.Insert(select, result);
                 RefreshList();
             }
         }
