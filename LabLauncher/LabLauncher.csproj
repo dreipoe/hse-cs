@@ -36,7 +36,7 @@
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>3</WarningLevel>
+    <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -69,6 +69,32 @@
       <DependentUpon>AddRecord.cs</DependentUpon>
     </Compile>
     <Compile Include="Lab8\Record.cs" />
+    <Compile Include="Lab9\Lab9.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lab9\Lab9.Designer.cs">
+      <DependentUpon>Lab9.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lab9\Money.cs" />
+    <Compile Include="Lab9\MoneyArray.cs" />
+    <Compile Include="Lab9\Task3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lab9\Task3.Designer.cs">
+      <DependentUpon>Task3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lab9\Task2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lab9\Task2.Designer.cs">
+      <DependentUpon>Task2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lab9\Task1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lab9\Task1.Designer.cs">
+      <DependentUpon>Task1.cs</DependentUpon>
+    </Compile>
     <Compile Include="LabLauncher.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +124,18 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Lab8\AddRecord.resx">
       <DependentUpon>AddRecord.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lab9\Lab9.resx">
+      <DependentUpon>Lab9.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lab9\Task3.resx">
+      <DependentUpon>Task3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lab9\Task2.resx">
+      <DependentUpon>Task2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lab9\Task1.resx">
+      <DependentUpon>Task1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LabLauncher.resx">
       <DependentUpon>LabLauncher.cs</DependentUpon>

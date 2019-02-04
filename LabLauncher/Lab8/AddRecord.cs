@@ -1,104 +1,85 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Drawing;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
 
-namespace LabLauncher
+namespace LabLauncher.Lab8Dir
 {
     public partial class AddRecord : Form
     {
-        protected Record record;
-        protected List<Record> db;
+        protected Record _record;
+        protected FileStream stream;
 
-        public AddRecord(List<Record> db)
+        public Record record
+        {
+            get
+            {
+                return _record;
+            }
+        }
+
+        public AddRecord(FileStream stream)
         {
             InitializeComponent();
             monthField.SelectedIndex = 0;
-            this.db = db;
-
-            MaximumSize = new Size(Width, Height);
-            MinimumSize = MaximumSize;
+            this.stream = stream;
         }
 
-        public AddRecord(List<Record> db, Record edit)
+        public AddRecord(FileStream stream, Record edit)
         {
             InitializeComponent();            
-            record = edit;
+            _record = edit;
             monthField.SelectedIndex = (int)record.mm;
-            yearField.Text = record.year.ToString();
+            yearField.Value = record.year;
             unitField.Text = record.unit;
-            profitField.Text = record.profit.ToString();
-            this.db = db;
-
-            MaximumSize = new Size(Width, Height);
-            MinimumSize = MaximumSize;
+            profitField.Value = record.profit;
+            this.stream = stream;
         }
 
         private void Accept(object sender, EventArgs e)
         {
             byte month = (byte)monthField.SelectedIndex;
-            short year;
-            uint profit = 0;
-            bool correct;
+            short year = (short)yearField.Value;
+            int profit = (int)profitField.Value;
 
-            correct = short.TryParse(yearField.Text, out year) && uint.TryParse(profitField.Text, out profit);
-
-            if (!correct)
+            if (unitField.TextLength == 0)
             {
                 MessageBox.Show(
-                    "Проверьте правильность введённых данных",
+                    "Заполните поле \"Подразделение\"",
                     "Добавить запись",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error
-                );
+                ); return;
             }
-            else
+
+            /*
+            _record = new Record((Record.month)month, year, unitField.Text, profit);
+            FileStream tmp = Serialize(_record);
+            byte[] arrtmp = new byte[tmp.Length];
+            tmp.Read(arrtmp, 0, (int)tmp.Length);
+
+            if (addToBegin.Checked)
             {
-                Record.month monthenum = (Record.month)month;
-                string key = $"{monthenum}.{year}";
-
-                if (!isDuplicateKey(key))
-                {
-                    record = new Record(monthenum, year, unitField.Text, profit);
-
-                    if (sender.Equals(addToBegin))
-                    {
-                        db.Insert(0, record);
-                    }
-                    else if (sender.Equals(addToEnd))
-                    {
-                        db.Add(record);
-                    }
-
-                    DialogResult = DialogResult.OK;
-                }
-                else
-                {
-                    MessageBox.Show(
-                        "Запись с указанным месяцем и годом уже есть в файле",
-                        "Добавить запись",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error
-                    );
-                }
+                stream.Seek(0, SeekOrigin.Begin);
+                return;
+            }   
+            else if (addToEnd.Checked)
+            {
+                stream.Seek(0, SeekOrigin.End);
+                stream.Write(arrtmp, 0, (int)tmp.Length);
             }
+            else return;
+            */
+
+            DialogResult = DialogResult.OK;
         }
 
-        protected bool isDuplicateKey(string key)
+        private FileStream Serialize(Record record)
         {
-            bool duplicate = false;
-
-            foreach (Record item in db)
-            {
-                if (key == item.key)
-                {
-                    duplicate = true;
-                    break;
-                }
-            }
-
-            return duplicate;
+            FileStream tmp = new FileStream("record.tmp", FileMode.Create);
+            BinaryFormatter bf = new BinaryFormatter();
+            bf.Serialize(stream, record);
+            return tmp;
         }
     }
 }

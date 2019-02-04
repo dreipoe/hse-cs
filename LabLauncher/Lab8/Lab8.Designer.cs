@@ -1,4 +1,4 @@
-﻿namespace LabLauncher
+﻿namespace LabLauncher.Lab8Dir
 {
     partial class Lab8
     {
@@ -128,6 +128,7 @@
             this.append.TabIndex = 2;
             this.append.Text = "Добавить";
             this.append.UseVisualStyleBackColor = true;
+            this.append.Visible = false;
             this.append.Click += new System.EventHandler(this.Append_Click);
             // 
             // edit
@@ -138,6 +139,7 @@
             this.edit.TabIndex = 4;
             this.edit.Text = "Изменить";
             this.edit.UseVisualStyleBackColor = true;
+            this.edit.Visible = false;
             this.edit.Click += new System.EventHandler(this.Edit_Click);
             // 
             // delete
@@ -148,6 +150,7 @@
             this.delete.TabIndex = 5;
             this.delete.Text = "Удалить";
             this.delete.UseVisualStyleBackColor = true;
+            this.delete.Visible = false;
             this.delete.Click += new System.EventHandler(this.delete_Click);
             // 
             // recordList
@@ -157,6 +160,7 @@
             this.recordList.Name = "recordList";
             this.recordList.Size = new System.Drawing.Size(310, 238);
             this.recordList.TabIndex = 6;
+            this.recordList.Visible = false;
             // 
             // Lab8
             // 
@@ -169,8 +173,11 @@
             this.Controls.Add(this.append);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.MaximumSize = new System.Drawing.Size(350, 350);
+            this.MinimumSize = new System.Drawing.Size(350, 350);
             this.Name = "Lab8";
             this.Text = "Fenix";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Lab8_FormClosed);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -192,7 +199,7 @@
         private System.Windows.Forms.ToolStripMenuItem самыйДлинныйПериодСНизкимиДоходамиToolStripMenuItem;
         private System.Windows.Forms.Button edit;
         private System.Windows.Forms.Button delete;
-        private System.Windows.Forms.ToolStripMenuItem сохранитьToolStripMenuItem;
         private System.Windows.Forms.ListBox recordList;
+        private System.Windows.Forms.ToolStripMenuItem сохранитьToolStripMenuItem;
     }
 }

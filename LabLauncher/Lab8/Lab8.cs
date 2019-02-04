@@ -1,34 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
 
-namespace LabLauncher
+namespace LabLauncher.Lab8Dir
 {
     public partial class Lab8 : Form
     {
-        public string filename = "Notname";
-        public List<Record> db;
-        public bool changed = false;
+        private string filename = "Notname";
+        private FileStream stream = null;
+        private bool changed = false;
+        private bool notname = false;
 
         public Lab8()
         {
             InitializeComponent();
-            db = new List<Record>();
-            Text = $"{filename} - Fenix";
-
-            //фиксированный размер окна
-            MaximumSize = new Size(Width, Height);
-            MinimumSize = MaximumSize;
-            RefreshList();
-        }
-
-        private void RefreshList()
-        {
-            recordList.DataSource = db.ToArray();
-            recordList.DisplayMember = "row";
         }
 
         private void Close_Click(object sender, EventArgs e)
@@ -52,17 +38,22 @@ namespace LabLauncher
             }
 
             filename = "Notname";
-            db = new List<Record>();
+            stream = new FileStream($"{filename}.fdb", FileMode.Create);
+            Text = $"{filename} - Fenix";
+
             changed = false;
+            notname = recordList.Visible = append.Visible = edit.Visible = delete.Visible = true;
         }
 
         private void Append_Click(object sender, EventArgs e)
         {
-            AddRecord addrecord = new AddRecord(db);
+            AddRecord addrecord = new AddRecord(stream);
 
             if (addrecord.ShowDialog() == DialogResult.OK)
             {
-                RefreshList();
+                //TODO: обновить 
+
+                changed = true;
             }
         }
 
@@ -70,11 +61,11 @@ namespace LabLauncher
         {
             Record record = recordList.SelectedItem as Record;
             int select = recordList.SelectedIndex;
-            AddRecord addrecord = new AddRecord(db, record);
+            AddRecord addrecord = new AddRecord(stream, record);
 
             if (addrecord.ShowDialog() == DialogResult.OK)
             {
-                RefreshList();
+                changed = true;
             }
         }
 
@@ -91,6 +82,28 @@ namespace LabLauncher
             if (delete == DialogResult.Yes)
             {
                 //удаляем
+            }
+        }
+
+        private FileStream Serialize(Record record)
+        {
+            FileStream tmp = new FileStream("record.tmp", FileMode.Create);
+            BinaryFormatter bf = new BinaryFormatter();
+            bf.Serialize(stream, record);
+            return tmp;
+        }
+
+        private void Lab8_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (stream != null)
+            {
+                stream.Close();
+            }
+
+            if (notname)
+            {
+                FileInfo delete = new FileInfo($"{filename}.fdb");
+                delete.Delete();
             }
         }
     }

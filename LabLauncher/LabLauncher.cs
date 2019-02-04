@@ -2,7 +2,8 @@
 using System.Windows.Forms;
 
 using Test = LabLauncher.TestDir.Test;
-//using Lab8 = LabLauncher.Lab8Dir.Lab8;
+using Lab8 = LabLauncher.Lab8Dir.Lab8;
+using Lab9 = LabLauncher.Lab9Dir.Lab9;
 
 namespace LabLauncher
 {
@@ -19,12 +20,10 @@ namespace LabLauncher
 
             switch (sLabName) {
                 case "test":
-                    Test test = new Test();
-                    test.Show();
+                    new Test().Show();
                     break;
-                case "8":
-                    Lab8 lab8 = new Lab8();
-                    lab8.Show();
+                case "9":
+                    new Lab9().Show();
                     break;
                 default:
                     MessageBox.Show(

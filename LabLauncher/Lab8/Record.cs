@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LabLauncher
+namespace LabLauncher.Lab8Dir
 {
     [Serializable]
     public class Record
@@ -11,7 +11,7 @@ namespace LabLauncher
         public month mm { get; }
         public int year { get; }
         public string unit { get; }
-        public uint profit { get; }
+        public int profit { get; }
 
         public string monthname
         {
@@ -35,11 +35,11 @@ namespace LabLauncher
             }
         }
 
-        public string key
+        public string id
         {
             get
             {
-                return $"{mm}.{year}";
+                return $"{mm}.{year}-{unit}";
             }
         }
 
@@ -51,12 +51,17 @@ namespace LabLauncher
             }
         }
 
-        public Record(month a, int b, string c, uint prof)
+        public Record(month a, int b, string c, int prof)
         {
             mm = a;
             year = b;
             unit = c;
             profit = prof;
+        }
+
+        public static string getId(month a, int b, string c)
+        {
+            return $"{a}.{b}-{c}";
         }
     }
 }
