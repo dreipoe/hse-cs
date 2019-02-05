@@ -1,32 +1,61 @@
-﻿namespace HelloWorld
+﻿namespace LabLauncher.Lab9Dir
 {
     class Money
     {
-		protected int roubles;
-		protected int copeeks;
+		protected int x_roubles;
+		protected byte x_copeeks;
 
-		protected static int count;
+		protected static int x_count;
 
-		public Money(int _roubles, int _copeeks)
+        public int roubles
+        {
+            get
+            {
+                return x_roubles;
+            }
+        }
+
+        public int copeeks
+        {
+            get
+            {
+                return x_copeeks;
+            }
+        }
+
+        public string row
+        {
+            get
+            {
+                return $"{x_roubles} руб. {x_copeeks} коп.";
+            }           
+        }
+
+        public static int count
+        {
+            get
+            {
+                return x_count;
+            }
+        }
+
+        public Money()
+        {
+            x_roubles = 0;
+            x_copeeks = 0;
+            x_count++;
+        }
+
+		public Money(int _roubles, byte _copeeks)
         {
             if (_roubles >= 0 && _copeeks >= 0 && _copeeks < 100)
             {
-                roubles = _roubles;
-                copeeks = _copeeks;
+                x_roubles = _roubles;
+                x_copeeks = _copeeks;
             }
 
-			count++;
+			x_count++;
         }
-
-		public int getRoubles()
-		{
-			return roubles;
-		}
-
-		public int getCopeeks()
-		{
-			return copeeks;
-		}
 
 		public static int Count()
 		{
@@ -35,34 +64,40 @@
 
 		public void addCopeeks(int add)
         {
-            copeeks += add;
+            int buf = x_copeeks;
+            buf += add;
 
-            while (copeeks > 99)
+            while (buf > 99)
             {
-                roubles++;
-                copeeks =- 100;
+                x_roubles++;
+                buf =- 100;
             }
+
+            x_copeeks = (byte)buf;
         }
 
         public static void addCopeeks(Money m, int add)
         {
-            m.copeeks += add;
+            int buf = m.x_copeeks;
+            buf += add;
 
-            while (m.copeeks > 99)
+            while (buf > 99)
             {
-                m.roubles++;
-                m.copeeks = -100;
+                m.x_roubles++;
+                buf = -100;
             }
+
+            m.x_copeeks = (byte)buf;
         }
 
         public static Money operator ++(Money money)
         {
-            if (money.copeeks == 99)
+            if (money.x_copeeks == 99)
             {
-                money.roubles++;
-                money.copeeks = 0;
+                money.x_roubles++;
+                money.x_copeeks = 0;
             }
-            else money.copeeks++;
+            else money.x_copeeks++;
 
             return money;
         }
@@ -73,11 +108,11 @@
             {
                 if (money.roubles != 0)
                 {
-                    money.roubles--;
-                    money.copeeks = 99;
+                    money.x_roubles--;
+                    money.x_copeeks = 99;
                 }
             }
-            else money.copeeks--;
+            else money.x_copeeks--;
 
             return money;
         }
@@ -93,7 +128,7 @@
                 cop =- 100;
             }
 
-            return new Money(rub, cop);
+            return new Money(rub, (byte)cop);
         }
 
         public static Money operator -(Money m1, Money m2)
@@ -111,7 +146,7 @@
                     cop =+ 100;
                 }
 
-                m = new Money(rub, cop);
+                m = new Money(rub, (byte)cop);
             }
 
             return m;
@@ -119,21 +154,13 @@
 
         public static bool operator <(Money m1, Money m2)
         {
-            bool result = false;
-
-            result = ((m1.roubles == m2.roubles) && (m1.copeeks < m2.copeeks)) ? true : result;
-            result = (m1.roubles < m2.roubles) ? true : result;
-
+            bool result = ((m1.roubles < m2.roubles) || (m1.roubles == m2.roubles) && (m1.copeeks < m2.copeeks)) ? true : false;
             return result;
         }
 
         public static bool operator >(Money m1, Money m2)
         {
-            bool result = false;
-
-            result = ((m1.roubles == m2.roubles) && (m1.copeeks > m2.copeeks)) ? true : result;
-            result = (m1.roubles > m2.roubles) ? true : result;
-
+            bool result = ((m1.roubles > m2.roubles) || (m1.roubles == m2.roubles) && (m1.copeeks > m2.copeeks)) ? true : false;
             return result;
         }
 

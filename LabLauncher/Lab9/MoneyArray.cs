@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HelloWorld.Lab9Dir
+namespace LabLauncher.Lab9Dir
 {
     class MoneyArray
     {
@@ -23,7 +23,7 @@ namespace HelloWorld.Lab9Dir
             for (int i = 0; i < _size; i++)
             {
                 tmp = rnd.Next(-10000, 10000);
-                array[i] = new Money(tmp / 100, tmp % 100);
+                array[i] = new Money(tmp / 100, (byte)(tmp % 100));
             }
         }
 
