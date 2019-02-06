@@ -32,10 +32,11 @@
             this.accountsList = new System.Windows.Forms.ListBox();
             this.incCopeek = new System.Windows.Forms.Button();
             this.decCopeek = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.ConvertMe = new System.Windows.Forms.Button();
             this.createObject = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.add = new System.Windows.Forms.Button();
+            this.subtract = new System.Windows.Forms.Button();
+            this.equal = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Total
@@ -52,7 +53,7 @@
             this.accountsList.FormattingEnabled = true;
             this.accountsList.Location = new System.Drawing.Point(12, 25);
             this.accountsList.Name = "accountsList";
-            this.accountsList.Size = new System.Drawing.Size(160, 134);
+            this.accountsList.Size = new System.Drawing.Size(160, 160);
             this.accountsList.TabIndex = 1;
             // 
             // incCopeek
@@ -63,6 +64,7 @@
             this.incCopeek.TabIndex = 2;
             this.incCopeek.Text = "Inc";
             this.incCopeek.UseVisualStyleBackColor = true;
+            this.incCopeek.Click += new System.EventHandler(this.incOrDecCopeek_Click);
             // 
             // decCopeek
             // 
@@ -72,15 +74,17 @@
             this.decCopeek.TabIndex = 3;
             this.decCopeek.Text = "Dec";
             this.decCopeek.UseVisualStyleBackColor = true;
+            this.decCopeek.Click += new System.EventHandler(this.incOrDecCopeek_Click);
             // 
-            // button1
+            // ConvertMe
             // 
-            this.button1.Location = new System.Drawing.Point(178, 134);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(114, 24);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Приведение типов";
-            this.button1.UseVisualStyleBackColor = true;
+            this.ConvertMe.Location = new System.Drawing.Point(178, 161);
+            this.ConvertMe.Name = "ConvertMe";
+            this.ConvertMe.Size = new System.Drawing.Size(114, 24);
+            this.ConvertMe.TabIndex = 4;
+            this.ConvertMe.Text = "Приведение типов";
+            this.ConvertMe.UseVisualStyleBackColor = true;
+            this.ConvertMe.Click += new System.EventHandler(this.incOrDecCopeek_Click);
             // 
             // createObject
             // 
@@ -90,40 +94,51 @@
             this.createObject.TabIndex = 5;
             this.createObject.Text = "Создать объект";
             this.createObject.UseVisualStyleBackColor = true;
+            this.createObject.Click += new System.EventHandler(this.createObject_Click);
             // 
-            // button2
+            // add
             // 
-            this.button2.Location = new System.Drawing.Point(178, 94);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(53, 24);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "+";
-            this.button2.UseVisualStyleBackColor = true;
+            this.add.Location = new System.Drawing.Point(178, 94);
+            this.add.Name = "add";
+            this.add.Size = new System.Drawing.Size(53, 24);
+            this.add.TabIndex = 6;
+            this.add.Text = "+";
+            this.add.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // subtract
             // 
-            this.button3.Location = new System.Drawing.Point(239, 94);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(53, 24);
-            this.button3.TabIndex = 7;
-            this.button3.Text = "-";
-            this.button3.UseVisualStyleBackColor = true;
+            this.subtract.Location = new System.Drawing.Point(239, 94);
+            this.subtract.Name = "subtract";
+            this.subtract.Size = new System.Drawing.Size(53, 24);
+            this.subtract.TabIndex = 7;
+            this.subtract.Text = "-";
+            this.subtract.UseVisualStyleBackColor = true;
+            // 
+            // equal
+            // 
+            this.equal.Location = new System.Drawing.Point(178, 124);
+            this.equal.Name = "equal";
+            this.equal.Size = new System.Drawing.Size(114, 23);
+            this.equal.TabIndex = 8;
+            this.equal.Text = "=";
+            this.equal.UseVisualStyleBackColor = true;
             // 
             // Task2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(304, 171);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.ClientSize = new System.Drawing.Size(304, 201);
+            this.Controls.Add(this.equal);
+            this.Controls.Add(this.subtract);
+            this.Controls.Add(this.add);
             this.Controls.Add(this.createObject);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.ConvertMe);
             this.Controls.Add(this.decCopeek);
             this.Controls.Add(this.incCopeek);
             this.Controls.Add(this.accountsList);
             this.Controls.Add(this.Total);
-            this.MaximumSize = new System.Drawing.Size(320, 210);
-            this.MinimumSize = new System.Drawing.Size(320, 210);
+            this.MaximumSize = new System.Drawing.Size(320, 240);
+            this.MinimumSize = new System.Drawing.Size(320, 240);
             this.Name = "Task2";
             this.Text = "Задача 2";
             this.ResumeLayout(false);
@@ -137,9 +152,10 @@
         private System.Windows.Forms.ListBox accountsList;
         private System.Windows.Forms.Button incCopeek;
         private System.Windows.Forms.Button decCopeek;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button ConvertMe;
         private System.Windows.Forms.Button createObject;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button add;
+        private System.Windows.Forms.Button subtract;
+        private System.Windows.Forms.Button equal;
     }
 }
