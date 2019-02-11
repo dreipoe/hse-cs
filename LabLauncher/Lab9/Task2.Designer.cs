@@ -104,6 +104,7 @@
             this.add.TabIndex = 6;
             this.add.Text = "+";
             this.add.UseVisualStyleBackColor = true;
+            this.add.Click += new System.EventHandler(this.incOrDecCopeek_Click);
             // 
             // subtract
             // 
@@ -113,6 +114,7 @@
             this.subtract.TabIndex = 7;
             this.subtract.Text = "-";
             this.subtract.UseVisualStyleBackColor = true;
+            this.subtract.Click += new System.EventHandler(this.incOrDecCopeek_Click);
             // 
             // equal
             // 
@@ -122,6 +124,7 @@
             this.equal.TabIndex = 8;
             this.equal.Text = "=";
             this.equal.UseVisualStyleBackColor = true;
+            this.equal.Click += new System.EventHandler(this.incOrDecCopeek_Click);
             // 
             // Task2
             // 

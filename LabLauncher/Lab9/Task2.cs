@@ -1,17 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LabLauncher.Lab9Dir
 {
-    //TODO: Реализация окончена, осталось отладить
-
     public partial class Task2 : Form
     {
         private List<Money> accounts;
@@ -41,6 +33,7 @@ namespace LabLauncher.Lab9Dir
         {
             if (accountsList.SelectedIndex == -1) return;
 
+            int save = accountsList.SelectedIndex;
             Money current = accountsList.SelectedItem as Money;
             Button send = sender as Button;
 
@@ -49,13 +42,14 @@ namespace LabLauncher.Lab9Dir
                 case "incCopeek": current++; break;
                 case "decCopeek": current--; break;
                 case "ConvertMe": convertMe(current);  break;
-                case "add": 
-                case "subtract": 
-                case "equal": break;
+                case "add": addClick(current); break;
+                case "subtract": subtractClick(current); break;
+                case "equal": equalClick(current); break;
                 default: return;
             }
 
             RefreshList();
+            accountsList.SelectedIndex = save;
         }
 
         private void convertMe(Money m)
@@ -83,22 +77,23 @@ namespace LabLauncher.Lab9Dir
             operation = '-';
         }
 
-        private void equalClick(Money m)
+        private void equalClick(Money second)
         {
             if (addend == null || operation != '+' && operation != '-') return;
 
             Money result;
             switch (operation)
             {
-                case '+': result = m + addend; break;
-                case '-': result = m - addend; break;
+                case '+': result = addend + second; break;
+                case '-': result = addend - second; break;
                 default: return;
             }
 
-            if (m != null)
+            if (result != null)
             {
                 accounts.Add(result);
                 Total.Text = $"Всего объектов: {Money.count}";
+                RefreshList();
             }
             else
                 MessageBox.Show(

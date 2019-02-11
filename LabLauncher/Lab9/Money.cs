@@ -15,7 +15,7 @@
             }
         }
 
-        public int copeeks
+        public byte copeeks
         {
             get
             {
@@ -70,7 +70,7 @@
             while (buf > 99)
             {
                 x_roubles++;
-                buf =- 100;
+                buf -= 100;
             }
 
             x_copeeks = (byte)buf;
@@ -84,7 +84,7 @@
             while (buf > 99)
             {
                 m.x_roubles++;
-                buf = -100;
+                buf -= 100;
             }
 
             m.x_copeeks = (byte)buf;
@@ -125,7 +125,7 @@
             if (cop > 99)
             {
                 rub++;
-                cop =- 100;
+                cop -= 100;
             }
 
             return new Money(rub, (byte)cop);
@@ -143,7 +143,7 @@
                 if (cop < 0)
                 {
                     rub--;
-                    cop =+ 100;
+                    cop += 100;
                 }
 
                 m = new Money(rub, (byte)cop);
