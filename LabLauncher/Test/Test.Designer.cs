@@ -28,57 +28,64 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dbBox = new System.Windows.Forms.ListBox();
-            this.add = new System.Windows.Forms.Button();
-            this.edit = new System.Windows.Forms.Button();
+            this.cmdLine = new System.Windows.Forms.TextBox();
+            this.run = new System.Windows.Forms.Button();
+            this.monitor = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // dbBox
+            // cmdLine
             // 
-            this.dbBox.FormattingEnabled = true;
-            this.dbBox.Location = new System.Drawing.Point(12, 18);
-            this.dbBox.Name = "dbBox";
-            this.dbBox.Size = new System.Drawing.Size(320, 251);
-            this.dbBox.TabIndex = 0;
+            this.cmdLine.Location = new System.Drawing.Point(12, 279);
+            this.cmdLine.Name = "cmdLine";
+            this.cmdLine.Size = new System.Drawing.Size(383, 22);
+            this.cmdLine.TabIndex = 1;
             // 
-            // add
+            // run
             // 
-            this.add.Location = new System.Drawing.Point(139, 285);
-            this.add.Name = "add";
-            this.add.Size = new System.Drawing.Size(24, 24);
-            this.add.TabIndex = 1;
-            this.add.Text = "+";
-            this.add.UseVisualStyleBackColor = true;
-            this.add.Click += new System.EventHandler(this.add_Click);
+            this.run.Location = new System.Drawing.Point(401, 279);
+            this.run.Name = "run";
+            this.run.Size = new System.Drawing.Size(45, 24);
+            this.run.TabIndex = 2;
+            this.run.Text = "Go";
+            this.run.UseVisualStyleBackColor = true;
+            this.run.Click += new System.EventHandler(this.run_Click);
             // 
-            // edit
+            // monitor
             // 
-            this.edit.Location = new System.Drawing.Point(169, 285);
-            this.edit.Name = "edit";
-            this.edit.Size = new System.Drawing.Size(24, 24);
-            this.edit.TabIndex = 2;
-            this.edit.Text = "E";
-            this.edit.UseMnemonic = false;
-            this.edit.UseVisualStyleBackColor = true;
+            this.monitor.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.monitor.Cursor = System.Windows.Forms.Cursors.Default;
+            this.monitor.ForeColor = System.Drawing.Color.Lime;
+            this.monitor.Location = new System.Drawing.Point(12, 12);
+            this.monitor.Multiline = true;
+            this.monitor.Name = "monitor";
+            this.monitor.ReadOnly = true;
+            this.monitor.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.monitor.Size = new System.Drawing.Size(434, 260);
+            this.monitor.TabIndex = 3;
+            this.monitor.Text = "N-Creative Shell\r\n© N-Creative, 2019. Public domain.\r\n>>> ";
             // 
             // Test
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(344, 321);
-            this.Controls.Add(this.edit);
-            this.Controls.Add(this.add);
-            this.Controls.Add(this.dbBox);
+            this.ClientSize = new System.Drawing.Size(462, 313);
+            this.Controls.Add(this.monitor);
+            this.Controls.Add(this.run);
+            this.Controls.Add(this.cmdLine);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MaximumSize = new System.Drawing.Size(480, 360);
+            this.MinimumSize = new System.Drawing.Size(480, 360);
             this.Name = "Test";
-            this.Text = "Test";
+            this.Text = "N-Creative Shell";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.ListBox dbBox;
-        private System.Windows.Forms.Button add;
-        private System.Windows.Forms.Button edit;
+        private System.Windows.Forms.TextBox cmdLine;
+        private System.Windows.Forms.Button run;
+        private System.Windows.Forms.TextBox monitor;
     }
 }

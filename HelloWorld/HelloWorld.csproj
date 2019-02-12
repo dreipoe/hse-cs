@@ -72,10 +72,7 @@
     <Compile Include="Lab7.cs" />
     <Compile Include="Lab8\Lab8.cs" />
     <Compile Include="Lab8\Record.cs" />
-    <Compile Include="Lab9\Lab9.cs" />
-    <Compile Include="Lab9\MoneyArray.cs" />
     <Compile Include="Lib.cs" />
-    <Compile Include="Lab9\Money.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

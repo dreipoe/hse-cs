@@ -18,13 +18,7 @@ namespace LabLauncher.Lab9Dir
         {
             accounts.Add(new Money());
             Total.Text = $"Всего объектов: {Money.count}";
-            RefreshList();
-        }
-
-        private void RefreshList()
-        {
             accountsList.DataSource = accounts.ToArray();
-            accountsList.DisplayMember = "row";
         }
 
         private void addCopeek_Click(object sender, EventArgs e)
@@ -39,7 +33,7 @@ namespace LabLauncher.Lab9Dir
             else
                 Money.addCopeeks(current, (int)copecks.Value);
 
-            RefreshList();
+            accountsList.DataSource = accounts.ToArray();
         }
     }
 }

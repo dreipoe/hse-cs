@@ -1,103 +1,66 @@
 ﻿namespace LabLauncher.Lab9Dir
 {
-    class Money
+    public class Money
     {
-		protected int x_roubles;
-		protected byte x_copeeks;
+		public int roubles { get; protected set; }
+		public int copeeks { get; protected set; }
 
-		protected static int x_count;
-
-        public int roubles
-        {
-            get
-            {
-                return x_roubles;
-            }
-        }
-
-        public byte copeeks
-        {
-            get
-            {
-                return x_copeeks;
-            }
-        }
-
-        public string row
-        {
-            get
-            {
-                return $"{x_roubles} руб. {x_copeeks} коп.";
-            }           
-        }
-
-        public static int count
-        {
-            get
-            {
-                return x_count;
-            }
-        }
+        public static int count { get; protected set; }
 
         public Money()
         {
-            x_roubles = 0;
-            x_copeeks = 0;
-            x_count++;
+            roubles = 0;
+            copeeks = 0;
+            count++;
         }
 
-		public Money(int _roubles, byte _copeeks)
+		public Money(int _roubles, int _copeeks)
         {
             if (_roubles >= 0 && _copeeks >= 0 && _copeeks < 100)
             {
-                x_roubles = _roubles;
-                x_copeeks = _copeeks;
+                roubles = _roubles;
+                copeeks = _copeeks;
             }
 
-			x_count++;
+			count++;
         }
-
-		public static int Count()
-		{
-			return count;
-		}
 
 		public void addCopeeks(int add)
         {
-            int buf = x_copeeks;
+            int buf = copeeks;
             buf += add;
 
             while (buf > 99)
             {
-                x_roubles++;
+                roubles++;
                 buf -= 100;
             }
 
-            x_copeeks = (byte)buf;
+            copeeks = (int)buf;
         }
 
         public static void addCopeeks(Money m, int add)
         {
-            int buf = m.x_copeeks;
+            int buf = m.copeeks;
             buf += add;
 
             while (buf > 99)
             {
-                m.x_roubles++;
+                m.roubles++;
                 buf -= 100;
             }
 
-            m.x_copeeks = (byte)buf;
+            m.copeeks = (int)buf;
         }
 
         public static Money operator ++(Money money)
         {
-            if (money.x_copeeks == 99)
+            if (money.copeeks == 99)
             {
-                money.x_roubles++;
-                money.x_copeeks = 0;
+                money.roubles++;
+                money.copeeks = 0;
             }
-            else money.x_copeeks++;
+            else money.copeeks++;
 
             return money;
         }
@@ -108,11 +71,11 @@
             {
                 if (money.roubles != 0)
                 {
-                    money.x_roubles--;
-                    money.x_copeeks = 99;
+                    money.roubles--;
+                    money.copeeks = 99;
                 }
             }
-            else money.x_copeeks--;
+            else money.copeeks--;
 
             return money;
         }
@@ -128,7 +91,7 @@
                 cop -= 100;
             }
 
-            return new Money(rub, (byte)cop);
+            return new Money(rub, (int)cop);
         }
 
         public static Money operator -(Money m1, Money m2)
@@ -146,7 +109,7 @@
                     cop += 100;
                 }
 
-                m = new Money(rub, (byte)cop);
+                m = new Money(rub, (int)cop);
             }
 
             return m;
@@ -171,7 +134,12 @@
 
         public static implicit operator double(Money money)
         {
-            return money.copeeks / 100;
+            return money.copeeks;
+        }
+
+        public override string ToString()
+        {
+            return $"{roubles} руб. {copeeks} коп.";
         }
     }
 }

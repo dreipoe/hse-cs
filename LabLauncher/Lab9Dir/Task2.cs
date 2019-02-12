@@ -20,13 +20,7 @@ namespace LabLauncher.Lab9Dir
         {
             accounts.Add(new Money());
             Total.Text = $"Всего объектов: {Money.count}";
-            RefreshList();
-        }
-
-        private void RefreshList()
-        {
             accountsList.DataSource = accounts.ToArray();
-            accountsList.DisplayMember = "row";
         }
 
         private void incOrDecCopeek_Click(object sender, EventArgs e)
@@ -48,7 +42,7 @@ namespace LabLauncher.Lab9Dir
                 default: return;
             }
 
-            RefreshList();
+            accountsList.DataSource = accounts.ToArray();
             accountsList.SelectedIndex = save;
         }
 
@@ -59,9 +53,12 @@ namespace LabLauncher.Lab9Dir
             double b = m;
 
             MessageBox.Show(
-                "Результат приведения типов выделенного объекта:\n" +
+                $"Результат приведения типов выделенного объекта:\n" +
                 $"Integer: {a}\n" +
-                $"Double: {b}."
+                $"Double: {b}.",
+                "Приведение типов",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information
             );
         }
 
@@ -93,7 +90,7 @@ namespace LabLauncher.Lab9Dir
             {
                 accounts.Add(result);
                 Total.Text = $"Всего объектов: {Money.count}";
-                RefreshList();
+                accountsList.DataSource = accounts.ToArray();
             }
             else
                 MessageBox.Show(

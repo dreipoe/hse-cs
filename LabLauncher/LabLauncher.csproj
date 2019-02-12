@@ -62,44 +62,66 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Lab8\AddRecord.cs">
+    <Compile Include="Lab10Dir\Classes\Employee.cs" />
+    <Compile Include="Lab10Dir\Classes\Engineer.cs" />
+    <Compile Include="Lab10Dir\Classes\Person.cs" />
+    <Compile Include="Lab10Dir\Classes\Worker.cs" />
+    <Compile Include="Lab10Dir\Lab10.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Lab8\AddRecord.Designer.cs">
-      <DependentUpon>AddRecord.cs</DependentUpon>
+    <Compile Include="Lab10Dir\Lab10.Designer.cs">
+      <DependentUpon>Lab10.cs</DependentUpon>
     </Compile>
-    <Compile Include="Lab8\Record.cs" />
-    <Compile Include="Lab9\Lab9.cs">
+    <Compile Include="Lab10Dir\Task1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Lab9\Lab9.Designer.cs">
-      <DependentUpon>Lab9.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Lab9\Money.cs" />
-    <Compile Include="Lab9\MoneyArray.cs" />
-    <Compile Include="Lab9\Task3.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Lab9\Task3.Designer.cs">
-      <DependentUpon>Task3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Lab9\Task2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Lab9\Task2.Designer.cs">
-      <DependentUpon>Task2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Lab9\Task1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Lab9\Task1.Designer.cs">
+    <Compile Include="Lab10Dir\Task1.Designer.cs">
       <DependentUpon>Task1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Lab9\Task3ManualFill.cs">
+    <Compile Include="Lab8Dir\AddRecord.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Lab9\Task3ManualFill.Designer.cs">
+    <Compile Include="Lab8Dir\AddRecord.Designer.cs">
+      <DependentUpon>AddRecord.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lab8Dir\Record.cs" />
+    <Compile Include="Lab9Dir\Lab9.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lab9Dir\Lab9.Designer.cs">
+      <DependentUpon>Lab9.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lab9Dir\Money.cs" />
+    <Compile Include="Lab9Dir\MoneyArray.cs" />
+    <Compile Include="Lab9Dir\Task3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lab9Dir\Task3.Designer.cs">
+      <DependentUpon>Task3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lab9Dir\Task2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lab9Dir\Task2.Designer.cs">
+      <DependentUpon>Task2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lab9Dir\Task1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lab9Dir\Task1.Designer.cs">
+      <DependentUpon>Task1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lab9Dir\Task3ManualFill.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lab9Dir\Task3ManualFill.Designer.cs">
       <DependentUpon>Task3ManualFill.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lab9Dir\Task3Viewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lab9Dir\Task3Viewer.Designer.cs">
+      <DependentUpon>Task3Viewer.cs</DependentUpon>
     </Compile>
     <Compile Include="LabLauncher.cs">
       <SubType>Form</SubType>
@@ -107,10 +129,10 @@
     <Compile Include="LabLauncher.Designer.cs">
       <DependentUpon>LabLauncher.cs</DependentUpon>
     </Compile>
-    <Compile Include="Lab8\Lab8.cs">
+    <Compile Include="Lab8Dir\Lab8.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Lab8\Lab8.Designer.cs">
+    <Compile Include="Lab8Dir\Lab8.Designer.cs">
       <DependentUpon>Lab8.cs</DependentUpon>
     </Compile>
     <Compile Include="Test\Test.cs">
@@ -128,28 +150,37 @@
     <Compile Include="Test\Person.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Lab8\AddRecord.resx">
-      <DependentUpon>AddRecord.cs</DependentUpon>
+    <EmbeddedResource Include="Lab10Dir\Lab10.resx">
+      <DependentUpon>Lab10.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Lab9\Lab9.resx">
-      <DependentUpon>Lab9.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Lab9\Task3.resx">
-      <DependentUpon>Task3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Lab9\Task2.resx">
-      <DependentUpon>Task2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Lab9\Task1.resx">
+    <EmbeddedResource Include="Lab10Dir\Task1.resx">
       <DependentUpon>Task1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Lab9\Task3ManualFill.resx">
+    <EmbeddedResource Include="Lab8Dir\AddRecord.resx">
+      <DependentUpon>AddRecord.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lab9Dir\Lab9.resx">
+      <DependentUpon>Lab9.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lab9Dir\Task3.resx">
+      <DependentUpon>Task3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lab9Dir\Task2.resx">
+      <DependentUpon>Task2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lab9Dir\Task1.resx">
+      <DependentUpon>Task1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lab9Dir\Task3ManualFill.resx">
       <DependentUpon>Task3ManualFill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lab9Dir\Task3Viewer.resx">
+      <DependentUpon>Task3Viewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LabLauncher.resx">
       <DependentUpon>LabLauncher.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Lab8\Lab8.resx">
+    <EmbeddedResource Include="Lab8Dir\Lab8.resx">
       <DependentUpon>Lab8.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -162,6 +193,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Test\Test.resx">
+      <DependentUpon>Test.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

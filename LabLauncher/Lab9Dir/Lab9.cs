@@ -20,9 +20,6 @@ namespace LabLauncher.Lab9Dir
                 new Task3().Show();
         }
 
-        private void closeButton_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
+        private void closeButton_Click(object sender, EventArgs e) { Close(); }
     }
 }

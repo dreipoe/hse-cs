@@ -27,16 +27,31 @@ namespace LabLauncher.Lab9Dir
                 if (!manualEl.Checked)
                     banks.Add(
                         new MoneyArray(
-                            (int)countEl.Value
+                            (byte)countEl.Value
                         )
                     );
                 else
                 {
-                    Task3ManualFill window = new Task3ManualFill((int)countEl.Value);
-                    window.ShowDialog();
+                    Task3ManualFill window = new Task3ManualFill((byte)countEl.Value);
+                    if (window.ShowDialog() == DialogResult.OK)
+                        banks.Add(
+                            new MoneyArray(
+                                window.accounts
+                            )
+                        );
                 }
             }
             else banks.Add(new MoneyArray());
+
+            bankList.DataSource = banks.ToArray();
+        }
+
+        private void viewMe_Click(object sender, EventArgs e)
+        {
+            if (bankList.SelectedIndex == -1) return;
+
+            Task3Viewer window = new Task3Viewer(bankList.SelectedItem as MoneyArray);
+            window.ShowDialog();
         }
     }
 }

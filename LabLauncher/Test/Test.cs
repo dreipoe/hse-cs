@@ -9,37 +9,32 @@ namespace LabLauncher.TestDir
 {
     public partial class Test : Form
     {
-        List<Person> db;
-
         public Test()
         {
             InitializeComponent();
-
-            db = new List<Person>();
-
-            //фиксированный размер окна
-            MaximumSize = new Size(Width, Height);
-            MinimumSize = MaximumSize;
-
-            refreshBox();
         }
 
-        private void refreshBox()
+        private void run_Click(object sender, EventArgs e)
         {
-            dbBox.DataSource = db.ToArray();
-            dbBox.DisplayMember = "toString";
-            dbBox.ValueMember = "hash";
-        }
+            bool closed = false;
+            string command = cmdLine.Text;
+            monitor.AppendText(command + '\n');
 
-        private void add_Click(object sender, EventArgs e)
-        {
-            Add addWindow = new Add();
-
-            if (addWindow.ShowDialog() == DialogResult.OK)
+            switch (command.ToLower())
             {
-                db.Add(addWindow.pers);
-                refreshBox();
+                case "hello":
+                    monitor.AppendText("Hello, world!\n");
+                    break;
+                case "exit":
+                    closed = true;
+                    Close();
+                    break;
+                default:
+                    monitor.AppendText("Неизвестная команда, проверьте правильность её написания\n");
+                    break;
             }
+
+            if (!closed) monitor.AppendText(">>> ");
         }
     }
 }

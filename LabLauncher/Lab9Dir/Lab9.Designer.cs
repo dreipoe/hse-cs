@@ -39,9 +39,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(16, 11);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(162, 13);
+            this.label1.Size = new System.Drawing.Size(212, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Выберите задачу для запуска:";
             // 
@@ -49,9 +50,10 @@
             // 
             this.radioTask1.AutoSize = true;
             this.radioTask1.Checked = true;
-            this.radioTask1.Location = new System.Drawing.Point(15, 25);
+            this.radioTask1.Location = new System.Drawing.Point(20, 31);
+            this.radioTask1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioTask1.Name = "radioTask1";
-            this.radioTask1.Size = new System.Drawing.Size(70, 17);
+            this.radioTask1.Size = new System.Drawing.Size(90, 21);
             this.radioTask1.TabIndex = 1;
             this.radioTask1.TabStop = true;
             this.radioTask1.Text = "Задача 1";
@@ -60,9 +62,10 @@
             // radioTask3
             // 
             this.radioTask3.AutoSize = true;
-            this.radioTask3.Location = new System.Drawing.Point(15, 71);
+            this.radioTask3.Location = new System.Drawing.Point(20, 87);
+            this.radioTask3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioTask3.Name = "radioTask3";
-            this.radioTask3.Size = new System.Drawing.Size(70, 17);
+            this.radioTask3.Size = new System.Drawing.Size(90, 21);
             this.radioTask3.TabIndex = 3;
             this.radioTask3.TabStop = true;
             this.radioTask3.Text = "Задача 3";
@@ -70,9 +73,10 @@
             // 
             // Accept
             // 
-            this.Accept.Location = new System.Drawing.Point(38, 94);
+            this.Accept.Location = new System.Drawing.Point(78, 116);
+            this.Accept.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Accept.Name = "Accept";
-            this.Accept.Size = new System.Drawing.Size(75, 23);
+            this.Accept.Size = new System.Drawing.Size(100, 28);
             this.Accept.TabIndex = 4;
             this.Accept.Text = "Вперёд";
             this.Accept.UseVisualStyleBackColor = true;
@@ -80,9 +84,10 @@
             // 
             // closeButton
             // 
-            this.closeButton.Location = new System.Drawing.Point(119, 94);
+            this.closeButton.Location = new System.Drawing.Point(186, 116);
+            this.closeButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(75, 23);
+            this.closeButton.Size = new System.Drawing.Size(100, 28);
             this.closeButton.TabIndex = 5;
             this.closeButton.Text = "Выйти";
             this.closeButton.UseVisualStyleBackColor = true;
@@ -91,26 +96,28 @@
             // radioTask2
             // 
             this.radioTask2.AutoSize = true;
-            this.radioTask2.Location = new System.Drawing.Point(15, 48);
+            this.radioTask2.Location = new System.Drawing.Point(20, 59);
+            this.radioTask2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioTask2.Name = "radioTask2";
-            this.radioTask2.Size = new System.Drawing.Size(70, 17);
+            this.radioTask2.Size = new System.Drawing.Size(90, 21);
             this.radioTask2.TabIndex = 2;
             this.radioTask2.Text = "Задача 2";
             this.radioTask2.UseVisualStyleBackColor = true;
             // 
             // Lab9
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(224, 121);
+            this.ClientSize = new System.Drawing.Size(362, 145);
             this.Controls.Add(this.closeButton);
             this.Controls.Add(this.Accept);
             this.Controls.Add(this.radioTask3);
             this.Controls.Add(this.radioTask2);
             this.Controls.Add(this.radioTask1);
             this.Controls.Add(this.label1);
-            this.MaximumSize = new System.Drawing.Size(240, 160);
-            this.MinimumSize = new System.Drawing.Size(240, 160);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MaximumSize = new System.Drawing.Size(380, 192);
+            this.MinimumSize = new System.Drawing.Size(380, 192);
             this.Name = "Lab9";
             this.Text = "Лаб. работа №9";
             this.ResumeLayout(false);
