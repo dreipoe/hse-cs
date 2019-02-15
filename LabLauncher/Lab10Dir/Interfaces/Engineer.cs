@@ -1,4 +1,4 @@
-﻿namespace LabLauncher.Lab10Dir
+﻿namespace LabLauncher.Lab10Dir.Interfaces
 {
     public class Engineer : Employee
     {
@@ -16,11 +16,16 @@
         ) : base(FIO, pos, c, salary, experience, edu)
         {
             //проверка требований к квалификации, необходимой для инженера, в зависимости от категории
-            if (rang == category.third && ((edu < education.secondarySpecial) || (edu < education.higher) && (experience < 3))) return;
+            if ((edu < education.secondarySpecial) || (edu < education.higher) && (experience < 3)) return;
             if (rang == category.second && ((edu < education.higher) || (experience < 3))) return;
             if (rang == category.first && ((edu < education.higher) || (experience < 6))) return;
 
             this.rang = rang;
+        }
+
+        public override object Clone()
+        {
+            return new Engineer(FIO, position, age, salary, experience, edu, rang);
         }
 
         public new string info()

@@ -10,16 +10,15 @@ namespace LabLauncher.Lab10Dir
             InitializeComponent();
         }
 
-        private void closeMe_Click(object sender, EventArgs e) { Close(); }
+        private void close_Click(object sender, EventArgs e) { Close();}
 
-        private void Go_Click(object sender, EventArgs e)
+        private void go_Click(object sender, EventArgs e)
         {
-            if (task1Radio.Checked)
-                new Task1().Show();
-            else if (task2Radio.Checked)
-                return;
-            else
-                return;
+            if (hierarchy.Checked)
+                new Case1().Show();
+            else if (interfaces.Checked)
+                new Case2().Show();
+            else return;
         }
     }
 }

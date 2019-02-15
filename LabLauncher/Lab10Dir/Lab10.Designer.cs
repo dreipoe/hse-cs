@@ -29,11 +29,10 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.task1Radio = new System.Windows.Forms.RadioButton();
-            this.task2Radio = new System.Windows.Forms.RadioButton();
-            this.task3Radio = new System.Windows.Forms.RadioButton();
-            this.Go = new System.Windows.Forms.Button();
-            this.closeMe = new System.Windows.Forms.Button();
+            this.hierarchy = new System.Windows.Forms.RadioButton();
+            this.interfaces = new System.Windows.Forms.RadioButton();
+            this.go = new System.Windows.Forms.Button();
+            this.close = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -41,76 +40,65 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(208, 17);
+            this.label1.Size = new System.Drawing.Size(163, 17);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Выберите задачу для запуска";
+            this.label1.Text = "Выберите реализацию:";
             // 
-            // task1Radio
+            // hierarchy
             // 
-            this.task1Radio.AutoSize = true;
-            this.task1Radio.Location = new System.Drawing.Point(15, 29);
-            this.task1Radio.Name = "task1Radio";
-            this.task1Radio.Size = new System.Drawing.Size(90, 21);
-            this.task1Radio.TabIndex = 1;
-            this.task1Radio.TabStop = true;
-            this.task1Radio.Text = "Задача 1";
-            this.task1Radio.UseVisualStyleBackColor = true;
+            this.hierarchy.AutoSize = true;
+            this.hierarchy.Checked = true;
+            this.hierarchy.Location = new System.Drawing.Point(12, 29);
+            this.hierarchy.Name = "hierarchy";
+            this.hierarchy.Size = new System.Drawing.Size(149, 21);
+            this.hierarchy.TabIndex = 1;
+            this.hierarchy.TabStop = true;
+            this.hierarchy.Text = "Иерархия классов";
+            this.hierarchy.UseVisualStyleBackColor = true;
             // 
-            // task2Radio
+            // interfaces
             // 
-            this.task2Radio.AutoSize = true;
-            this.task2Radio.Location = new System.Drawing.Point(15, 56);
-            this.task2Radio.Name = "task2Radio";
-            this.task2Radio.Size = new System.Drawing.Size(90, 21);
-            this.task2Radio.TabIndex = 2;
-            this.task2Radio.TabStop = true;
-            this.task2Radio.Text = "Задача 2";
-            this.task2Radio.UseVisualStyleBackColor = true;
+            this.interfaces.AutoSize = true;
+            this.interfaces.Location = new System.Drawing.Point(12, 56);
+            this.interfaces.Name = "interfaces";
+            this.interfaces.Size = new System.Drawing.Size(114, 21);
+            this.interfaces.TabIndex = 2;
+            this.interfaces.TabStop = true;
+            this.interfaces.Text = "Интерфейсы";
+            this.interfaces.UseVisualStyleBackColor = true;
             // 
-            // task3Radio
+            // go
             // 
-            this.task3Radio.AutoSize = true;
-            this.task3Radio.Location = new System.Drawing.Point(15, 83);
-            this.task3Radio.Name = "task3Radio";
-            this.task3Radio.Size = new System.Drawing.Size(90, 21);
-            this.task3Radio.TabIndex = 3;
-            this.task3Radio.TabStop = true;
-            this.task3Radio.Text = "Задача 3";
-            this.task3Radio.UseVisualStyleBackColor = true;
+            this.go.Location = new System.Drawing.Point(78, 91);
+            this.go.Name = "go";
+            this.go.Size = new System.Drawing.Size(75, 30);
+            this.go.TabIndex = 3;
+            this.go.Text = "Вперёд";
+            this.go.UseVisualStyleBackColor = true;
+            this.go.Click += new System.EventHandler(this.go_Click);
             // 
-            // Go
+            // close
             // 
-            this.Go.Location = new System.Drawing.Point(108, 110);
-            this.Go.Name = "Go";
-            this.Go.Size = new System.Drawing.Size(75, 24);
-            this.Go.TabIndex = 4;
-            this.Go.Text = "Вперёд";
-            this.Go.UseVisualStyleBackColor = true;
-            this.Go.Click += new System.EventHandler(this.Go_Click);
-            // 
-            // closeMe
-            // 
-            this.closeMe.Location = new System.Drawing.Point(189, 110);
-            this.closeMe.Name = "closeMe";
-            this.closeMe.Size = new System.Drawing.Size(75, 24);
-            this.closeMe.TabIndex = 5;
-            this.closeMe.Text = "Выйти";
-            this.closeMe.UseVisualStyleBackColor = true;
-            this.closeMe.Click += new System.EventHandler(this.closeMe_Click);
+            this.close.Location = new System.Drawing.Point(159, 91);
+            this.close.Name = "close";
+            this.close.Size = new System.Drawing.Size(75, 30);
+            this.close.TabIndex = 4;
+            this.close.Text = "Назад";
+            this.close.UseVisualStyleBackColor = true;
+            this.close.Click += new System.EventHandler(this.close_Click);
             // 
             // Lab10
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(362, 145);
-            this.Controls.Add(this.closeMe);
-            this.Controls.Add(this.Go);
-            this.Controls.Add(this.task3Radio);
-            this.Controls.Add(this.task2Radio);
-            this.Controls.Add(this.task1Radio);
+            this.ClientSize = new System.Drawing.Size(302, 133);
+            this.Controls.Add(this.close);
+            this.Controls.Add(this.go);
+            this.Controls.Add(this.interfaces);
+            this.Controls.Add(this.hierarchy);
             this.Controls.Add(this.label1);
-            this.MaximumSize = new System.Drawing.Size(380, 192);
-            this.MinimumSize = new System.Drawing.Size(380, 192);
+            this.MaximumSize = new System.Drawing.Size(320, 180);
+            this.MinimumSize = new System.Drawing.Size(320, 180);
             this.Name = "Lab10";
             this.Text = "Лаб. работа №10";
             this.ResumeLayout(false);
@@ -121,10 +109,9 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.RadioButton task1Radio;
-        private System.Windows.Forms.RadioButton task2Radio;
-        private System.Windows.Forms.RadioButton task3Radio;
-        private System.Windows.Forms.Button Go;
-        private System.Windows.Forms.Button closeMe;
+        private System.Windows.Forms.RadioButton hierarchy;
+        private System.Windows.Forms.RadioButton interfaces;
+        private System.Windows.Forms.Button go;
+        private System.Windows.Forms.Button close;
     }
 }

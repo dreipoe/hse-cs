@@ -1,6 +1,8 @@
-﻿namespace LabLauncher.Lab10Dir
+﻿using System;
+
+namespace LabLauncher.Lab10Dir.Interfaces
 {
-    public class Worker : Person
+    public class Worker : Person, ICloneable
     {
         protected int salary;
         public byte experience { get; protected set; }
@@ -28,6 +30,11 @@
             this.salary = salary;
             this.experience = (byte)experience;
             return true;
+        }
+
+        public override object Clone()
+        {
+            return new Worker(FIO, position, age, salary, experience);
         }
 
         public new string info()

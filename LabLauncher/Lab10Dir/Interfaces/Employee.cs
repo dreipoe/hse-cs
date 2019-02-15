@@ -1,13 +1,25 @@
-﻿namespace LabLauncher.Lab10Dir
+﻿namespace LabLauncher.Lab10Dir.Interfaces
 {
     public class Employee : Worker
     {
         public enum education { secondary, secondarySpecial, higherIncomplete, higher, postgraduate }
         protected education edu;
 
-        public Employee(string FIO, string pos, byte c, int salary, int experience, education edu) : base(FIO, pos, c, salary, experience)
+        public Employee(
+            string FIO,
+            string pos,
+            byte c,
+            int salary,
+            int experience,
+            education edu
+        ) : base(FIO, pos, c, salary, experience)
         {
             this.edu = edu;
+        }
+
+        public override object Clone()
+        {
+            return new Employee(FIO, position, age, salary, experience, edu);
         }
 
         public new string info()

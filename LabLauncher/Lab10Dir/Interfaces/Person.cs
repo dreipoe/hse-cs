@@ -1,6 +1,8 @@
-﻿namespace LabLauncher.Lab10Dir
+﻿using System;
+
+namespace LabLauncher.Lab10Dir.Interfaces
 {
-    public class Person
+    public abstract class Person : PersonInterface, IComparable, ICloneable
     {
         protected string FIO;
         protected byte age;
@@ -9,6 +11,11 @@
         {
             this.FIO = FIO;
             age = c;
+        }
+
+        public virtual object Clone()
+        {
+            return null;
         }
 
         public string info()
@@ -26,6 +33,14 @@
         public override string ToString()
         {
             return FIO;
+        }
+
+        public int CompareTo(object a)
+        {
+            Person tmp = (Person)a;
+            if (string.Compare(FIO, tmp.FIO) > 0) return 1;
+            if (string.Compare(FIO, tmp.FIO) < 0) return -1;
+            return 0;
         }
 
         protected string yearCase(int years)

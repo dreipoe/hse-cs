@@ -62,21 +62,41 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Lab10Dir\Case2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lab10Dir\Case2.Designer.cs">
+      <DependentUpon>Case2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Lab10Dir\Classes\Employee.cs" />
     <Compile Include="Lab10Dir\Classes\Engineer.cs" />
     <Compile Include="Lab10Dir\Classes\Person.cs" />
+    <Compile Include="Lab10Dir\Classes\PersonArray.cs" />
     <Compile Include="Lab10Dir\Classes\Worker.cs" />
+    <Compile Include="Lab10Dir\Interfaces\Employee.cs" />
+    <Compile Include="Lab10Dir\Interfaces\Engineer.cs" />
+    <Compile Include="Lab10Dir\Interfaces\Person.cs" />
+    <Compile Include="Lab10Dir\Interfaces\PersonArray.cs" />
+    <Compile Include="Lab10Dir\Interfaces\PersonComparer.cs" />
+    <Compile Include="Lab10Dir\Interfaces\PersonInterface.cs" />
+    <Compile Include="Lab10Dir\Interfaces\Worker.cs" />
+    <Compile Include="Lab10Dir\Case1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lab10Dir\Case1.Designer.cs">
+      <DependentUpon>Case1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Lab10Dir\Lab10.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Lab10Dir\Lab10.Designer.cs">
       <DependentUpon>Lab10.cs</DependentUpon>
     </Compile>
-    <Compile Include="Lab10Dir\Task1.cs">
+    <Compile Include="Lab10Dir\Result.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Lab10Dir\Task1.Designer.cs">
-      <DependentUpon>Task1.cs</DependentUpon>
+    <Compile Include="Lab10Dir\Result.Designer.cs">
+      <DependentUpon>Result.cs</DependentUpon>
     </Compile>
     <Compile Include="Lab8Dir\AddRecord.cs">
       <SubType>Form</SubType>
@@ -150,11 +170,17 @@
     <Compile Include="Test\Person.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Lab10Dir\Case1.resx">
+      <DependentUpon>Case1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lab10Dir\Case2.resx">
+      <DependentUpon>Case2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Lab10Dir\Lab10.resx">
       <DependentUpon>Lab10.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Lab10Dir\Task1.resx">
-      <DependentUpon>Task1.cs</DependentUpon>
+    <EmbeddedResource Include="Lab10Dir\Result.resx">
+      <DependentUpon>Result.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Lab8Dir\AddRecord.resx">
       <DependentUpon>AddRecord.cs</DependentUpon>

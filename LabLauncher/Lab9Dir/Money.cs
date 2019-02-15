@@ -14,15 +14,14 @@
             count++;
         }
 
-		public Money(int _roubles, int _copeeks)
+		public Money(int roubles, int copeeks)
         {
-            if (_roubles >= 0 && _copeeks >= 0 && _copeeks < 100)
+            if (roubles >= 0 && copeeks >= 0 && copeeks < 100)
             {
-                roubles = _roubles;
-                copeeks = _copeeks;
+                this.roubles = roubles;
+                this.copeeks = copeeks;
+                count++;
             }
-
-			count++;
         }
 
 		public void addCopeeks(int add)
@@ -36,7 +35,7 @@
                 buf -= 100;
             }
 
-            copeeks = (int)buf;
+            copeeks = buf;
         }
 
         public static void addCopeeks(Money m, int add)
