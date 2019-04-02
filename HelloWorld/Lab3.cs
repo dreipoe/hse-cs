@@ -20,18 +20,17 @@ namespace HelloWorld
                 int n;
 
                 double member;
-                for (n = 2; n <= 50; n++)
+                for (n = 2; n <= 40; n++)
                     sn += Cos(n * x) / n;
 
                 n = 2;
-                double sqrt2 = 1 / Sqrt(2);
 
                 do
                 {
                     member = Cos(n * x) / n;
                     se += member;
                     n++;
-				} while (sqrt2 / n > 0.0001); //исключим преждевременный выход из цикла, если синусоида окажется слишком близко к нулю
+				} while (1 / n > 0.0001); //исключим преждевременный выход из цикла, если синусоида окажется слишком близко к нулю
 
                 double y = -Log(
                                 Abs(

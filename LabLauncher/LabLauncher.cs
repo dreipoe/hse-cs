@@ -4,6 +4,8 @@ using System.Windows.Forms;
 using Test = LabLauncher.TestDir.Test;
 using Lab9 = LabLauncher.Lab9Dir.Lab9;
 using Lab10 = LabLauncher.Lab10Dir.Lab10;
+using Markov = LabLauncher.Markoff.Program;
+using Turin = LabLauncher.Turing.Program;
 
 namespace LabLauncher
 {
@@ -16,13 +18,15 @@ namespace LabLauncher
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (lab9Radio.Checked)
-                new Lab9().Show();
-            else if (lab10Radio.Checked)
-                new Lab10().Show();
-            else if (sandboxRadio.Checked)
-                new Test().Show();
-            else return;
+            switch (labList.SelectedIndex)
+            {
+                case 0: new Lab9().Show(); break;
+                case 1: new Lab10().Show(); break;
+                case 2: new Turin().Show(); break;
+                case 3: new Markov().Show(); break;
+                case 4: new Test().Show(); break;
+                default: return;
+            }
         }
 
         private void Exit_Click(object sender, EventArgs e)

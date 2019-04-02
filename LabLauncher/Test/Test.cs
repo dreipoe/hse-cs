@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace LabLauncher.TestDir
@@ -12,29 +8,15 @@ namespace LabLauncher.TestDir
         public Test()
         {
             InitializeComponent();
-        }
 
-        private void run_Click(object sender, EventArgs e)
-        {
-            bool closed = false;
-            string command = cmdLine.Text;
-            monitor.AppendText(command + '\n');
-
-            switch (command.ToLower())
-            {
-                case "hello":
-                    monitor.AppendText("Hello, world!\n");
-                    break;
-                case "exit":
-                    closed = true;
-                    Close();
-                    break;
-                default:
-                    monitor.AppendText("Неизвестная команда, проверьте правильность её написания\n");
-                    break;
-            }
-
-            if (!closed) monitor.AppendText(">>> ");
+            MyList list = new MyList();
+            list.Push(1);
+            list.Push(2);
+            list.Push(3);
+            list.Push(4);
+            list.Pop();
+            int i = list.IndexOf(2);
+            MessageBox.Show(i.ToString(), "Test");
         }
     }
 }

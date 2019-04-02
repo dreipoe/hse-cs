@@ -6,16 +6,15 @@ namespace HelloWorld
     {
         private class Unidirectional
         {
-            public double field;
-            public Unidirectional next;
-
-            public Unidirectional(double _field, Unidirectional _next = null)
+            private class Item
             {
-                field = _field;
-                next = _next;
+                public double field;
+                public Item next;
             }
 
-            public static Unidirectional Born()
+            private Item head;
+
+            public void Born()
             {
                 Console.Write("Количество элементов в списке: ");
 
@@ -24,33 +23,27 @@ namespace HelloWorld
                 {
                     Random random = new Random();
 
-                    Unidirectional head = new Unidirectional(random.NextDouble() * 200 - 100), tmp = head;
-
-                    for (byte i = 1; i < n; i++)
-                    {
-                        head = new Unidirectional(random.NextDouble() * 200 - 100, tmp);
-                        tmp = head;
-                    }
-
-                    return head;
+                    for (byte i = 0; i < n; i++)
+                        head = new Item
+                        {
+                            field = random.NextDouble() * 200 - 100,
+                            next = head
+                        };
                 }
-                else
-                {
-                    Console.WriteLine("Введённое значение не является натуральным числом или значение слишком велико.");
-                    return null;
-                }    
+                else Console.WriteLine("Введённое значение не является натуральным числом или значение слишком велико."); 
             }
 
             public void Print()
             {
-                if (this != null)
+                Item current = head;
+
+                if (current != null)
                 {
-                    Unidirectional handle = this;
                     Console.WriteLine("Состав списка: ");
-                    while (handle != null)
+                    while (current != null)
                     {
-                        Console.Write($"{handle.field:f3} ");
-                        handle = handle.next;
+                        Console.Write($"{current.field:f3} ");
+                        current = current.next;
                     }
                     Console.WriteLine();
                 } else Console.WriteLine("Список пуст.");
@@ -58,15 +51,15 @@ namespace HelloWorld
 
             public void DelEvenItems()
             {
-                if (this != null && next != null)
-                {
-                    Unidirectional handle = this;
-                    while (handle.next != null)
-                    {
-                        handle.next = handle.next.next;
+                Item current = head;
 
-                        if (handle.next != null)
-                            handle = handle.next;
+                if (current != null && current.next != null)
+                {
+                    while (current.next != null)
+                    {
+                        current.next = current.next.next;
+                        if (current.next != null)
+                            current = current.next;
                     }
                 }
                 else Console.WriteLine("Список пуст или содержит всего один элемент.");
@@ -75,98 +68,97 @@ namespace HelloWorld
 
         private class Bidirectional
         {
-            public string field;
-            public Bidirectional next;
-            public Bidirectional pred;
-
-            public Bidirectional(string _field, Bidirectional _pred = null, Bidirectional _next = null)
+            private class Item
             {
-                field = _field;
-                next = _next;
-                pred = _pred;
+                public string field;
+                public Item next;
+                public Item pred;
             }
 
-            public static Bidirectional Born()
+            private Item head;
+
+            public void Born()
             {
                 Console.Write("Количество элементов в списке: ");
 
                 byte n;
                 if (byte.TryParse(Console.ReadLine(), out n) && n > 0)
                 {
-                    Console.Write("Введите строку 1: ");
-                    Bidirectional head = new Bidirectional(Console.ReadLine()), tmp = head, last = null;
-
-                    for (byte i = 2; i <= n; i++)
+                    for (byte i = 1; i <= n; i++)
                     {
                         Console.Write($"Введите строку {i}: ");
-                        last = new Bidirectional(Console.ReadLine(), tmp);
-                        tmp.next = last;
 
-                        tmp = last;
+                        head = new Item
+                        {
+                            field = Console.ReadLine(),
+                            next = head
+                        };
+
+                        if (head.next != null) head.next.pred = head;
                     }
-
-                    return head;
                 }
-                else
-                {
-                    Console.WriteLine("Введённое значение не является натуральным числом или значение слишком велико.");
-                    return null;
-                }
+                else Console.WriteLine("Введённое значение не является натуральным числом или значение слишком велико.");
             }
 
             public void Print()
             {
-                if (this != null)
+                Item current = head;
+
+                if (current != null)
                 {
-                    Bidirectional handle = this, head = this;
                     Console.WriteLine("Состав списка: ");
 
                     do
                     {
-                        Console.WriteLine($"{handle.field:f3} ");
-                        handle = handle.next;
-                    } while (handle != null);
+                        Console.WriteLine($"{current.field:f3} ");
+                        current = current.next;
+                    } while (current != null);
                 }
                 else Console.WriteLine("Список пуст.");
             }
 
-            public Bidirectional AddOddStrings()
+            public void AddOddStrings()
             {
-                Bidirectional insert, cursor = this, tmp = null;
+                Item current = head, insert, tmp = null;
 
-                while (cursor != null)
+                while (current != null)
                 {
                     Console.Write("Введите нечётную строку: ");
 
-                    insert = new Bidirectional(Console.ReadLine(), tmp, cursor);
+                    insert = new Item
+                    {
+                        field = Console.ReadLine(),
+                        pred = current.pred,
+                        next = current
+                    };
                     if (tmp != null) tmp.next = insert;
-                    cursor.pred = insert;
-                    tmp = cursor;
-                    cursor = cursor.next;
+                    current.pred = insert;
+                    tmp = current;
+                    current = current.next;
 
                     Console.WriteLine("Вставили.");
                 }
 
-                return pred;
+                head = head.pred;
             }
         }
 
         private class BinaryTree
         {
-            public int field;
-            public BinaryTree left;
-            public BinaryTree right;
+            private class Item
+            {
+                public int field;
+                public Item left;
+                public Item right;
+            }
+
+            private Item root;
 
             public static Random random = new Random();
 
-            public BinaryTree(int d)
-            {
-                field = d;
-            }
-
             public static BinaryTree BornIdealTree()
             {
-                BinaryTree me = null;
+                BinaryTree me = new BinaryTree();
                 Console.Write("Высота дерева: ");
 
                 byte deep;
@@ -177,39 +169,54 @@ namespace HelloWorld
                     else if (deep > 24)
                         Console.WriteLine("На столь большое дерево не хватит оперативной памяти. Операция не выполнена.");
                     else
-                        me = CreateIdealTree(deep);
+                        me.root = CreateIdealTree(deep);
                 } else Console.WriteLine("Введённое значение не является натуральным числом либо число слишком большое.");
 
                 return me;
             }
 
-            private static BinaryTree CreateIdealTree(int deep)
+            public void Print()
             {
-                BinaryTree me = new BinaryTree(random.Next(-100, 100));
-                me.left = (deep > 1) ? CreateIdealTree(deep - 1) : null;
-                me.right = (deep > 1) ? CreateIdealTree(deep - 1) : null;
-
-                return me;
+                ShowTree(root, 0);
             }
 
-            public void Print(int l = 0)
+            public int FindMaxNumber()
             {
-                if (left != null) left.Print(l + 3);
-                Console.Write("\t");
-                for (int i = 0; i < l; i++) Console.Write(" ");
-                Console.WriteLine(field);
-                if (right != null) right.Print(l + 3);
+                return FindMaxNumber(root);
             }
 
-            public int FindMaxNumber(int max = int.MinValue)
+            private static Item CreateIdealTree(int deep)
             {
-                max = (field > max) ? field : max;
-                max = (left != null) ? left.FindMaxNumber(max) : max;
-                max = (right != null) ? right.FindMaxNumber(max) : max;
+                return new Item {
+                    field = random.Next(-100, 100),
+                    left = (deep > 1) ? CreateIdealTree(deep - 1) : null,
+                    right = (deep > 1) ? CreateIdealTree(deep - 1) : null
+                };
+            }
+
+            private void ShowTree(Item current, int l)
+            {
+                if (current != null)
+                {
+                    ShowTree(current.left, l + 3);
+                    for (int i = 0; i < l; i++) Console.Write(' ');
+                    Console.WriteLine(current.field);
+                    ShowTree(current.right, l + 3);
+                }
+            }
+
+            private int FindMaxNumber(Item current, int max = int.MinValue)
+            {
+                if (current != null) {
+                    max = Math.Max(current.field, max);
+                    max = (root.left != null) ? FindMaxNumber(current.left, max) : max;
+                    max = (root.right != null) ? FindMaxNumber(current.right, max) : max;
+                }
 
                 return max;
             }
 
+            /*
             public BinaryTree GetSortedTree()
             {
                 BinaryTree sorted = new BinaryTree(field);
@@ -252,6 +259,7 @@ namespace HelloWorld
 
                 return true;
             }
+            */
         }
 
         public static void Run()
@@ -285,7 +293,7 @@ namespace HelloWorld
         public static void Unilist()
         {
             string key = string.Empty;
-            Unidirectional list = null;
+            Unidirectional list = new Unidirectional();
 
             do
             {
@@ -302,7 +310,7 @@ namespace HelloWorld
                 {
                     switch (key)
                     {
-                        case "1": list = Unidirectional.Born(); break;
+                        case "1": list.Born(); break;
                         case "2": list.Print(); break;
                         case "3": list.DelEvenItems(); break;
                         case "0": break;
@@ -319,7 +327,7 @@ namespace HelloWorld
         public static void Belist()
         {
             string key = string.Empty;
-            Bidirectional list = null;
+            Bidirectional list = new Bidirectional();
 
             do
             {
@@ -336,9 +344,9 @@ namespace HelloWorld
                 {
                     switch (key)
                     {
-                        case "1": list = Bidirectional.Born(); break;
+                        case "1": list.Born(); break;
                         case "2": list.Print(); break;
-                        case "3": list = list.AddOddStrings(); break;
+                        case "3": list.AddOddStrings(); break;
                         case "0": break;
                         default:
                             Console.WriteLine("Нет такого пункта в меню.");
@@ -374,7 +382,7 @@ namespace HelloWorld
                         case "1": tree = BinaryTree.BornIdealTree(); break;
                         case "2": tree.Print(); break;
                         case "3": Console.WriteLine($"Маскимальное число в дереве: {tree.FindMaxNumber()}"); break;
-                        case "4": tree = tree.GetSortedTree(); break;
+                        //case "4": tree = tree.GetSortedTree(); break;
                         case "0": break;
                         default:
                             Console.WriteLine("Нет такого пункта в меню.");
