@@ -32,7 +32,6 @@
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.createFile = new System.Windows.Forms.ToolStripMenuItem();
             this.openFile = new System.Windows.Forms.ToolStripMenuItem();
-            this.сохранитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.Close = new System.Windows.Forms.ToolStripMenuItem();
             this.доходыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,7 +60,6 @@
             this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.createFile,
             this.openFile,
-            this.сохранитьToolStripMenuItem,
             this.toolStripMenuItem1,
             this.Close});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
@@ -71,31 +69,25 @@
             // createFile
             // 
             this.createFile.Name = "createFile";
-            this.createFile.Size = new System.Drawing.Size(132, 22);
+            this.createFile.Size = new System.Drawing.Size(152, 22);
             this.createFile.Text = "Создать";
             this.createFile.Click += new System.EventHandler(this.CreateFile_Click);
             // 
             // openFile
             // 
             this.openFile.Name = "openFile";
-            this.openFile.Size = new System.Drawing.Size(132, 22);
+            this.openFile.Size = new System.Drawing.Size(152, 22);
             this.openFile.Text = "Открыть";
-            // 
-            // сохранитьToolStripMenuItem
-            // 
-            this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
-            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
-            this.сохранитьToolStripMenuItem.Text = "Сохранить";
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(129, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
             // 
             // Close
             // 
             this.Close.Name = "Close";
-            this.Close.Size = new System.Drawing.Size(132, 22);
+            this.Close.Size = new System.Drawing.Size(152, 22);
             this.Close.Text = "Выход";
             this.Close.Click += new System.EventHandler(this.Close_Click);
             // 
@@ -200,6 +192,5 @@
         private System.Windows.Forms.Button edit;
         private System.Windows.Forms.Button delete;
         private System.Windows.Forms.ListBox recordList;
-        private System.Windows.Forms.ToolStripMenuItem сохранитьToolStripMenuItem;
     }
 }

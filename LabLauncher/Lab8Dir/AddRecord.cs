@@ -7,35 +7,16 @@ namespace LabLauncher.Lab8Dir
 {
     public partial class AddRecord : Form
     {
-        protected Record _record;
-        protected FileStream stream;
+        private string filename;
 
-        public Record record
-        {
-            get
-            {
-                return _record;
-            }
-        }
-
-        public AddRecord(FileStream stream)
+        public AddRecord(string filename)
         {
             InitializeComponent();
             monthField.SelectedIndex = 0;
-            this.stream = stream;
+            this.filename = filename;
         }
 
-        public AddRecord(FileStream stream, Record edit)
-        {
-            InitializeComponent();            
-            _record = edit;
-            monthField.SelectedIndex = (int)record.mm;
-            yearField.Value = record.year;
-            unitField.Text = record.unit;
-            profitField.Value = record.profit;
-            this.stream = stream;
-        }
-
+        //нажатие кнопки Добавить
         private void Accept(object sender, EventArgs e)
         {
             byte month = (byte)monthField.SelectedIndex;
@@ -52,34 +33,34 @@ namespace LabLauncher.Lab8Dir
                 ); return;
             }
 
-            /*
-            _record = new Record((Record.month)month, year, unitField.Text, profit);
-            FileStream tmp = Serialize(_record);
-            byte[] arrtmp = new byte[tmp.Length];
-            tmp.Read(arrtmp, 0, (int)tmp.Length);
+            Record record = new Record((Record.month)month, year, unitField.Text, profit);
 
+            BinaryFormatter bf = new BinaryFormatter();
             if (addToBegin.Checked)
             {
-                stream.Seek(0, SeekOrigin.Begin);
-                return;
-            }   
+                FileInfo file = new FileInfo($"data/{filename}.fdb");
+                FileInfo tmp = file.CopyTo("data/tmp");
+
+                FileStream fileStream = new FileStream($"data/{filename}.fdb", FileMode.Truncate);
+                FileStream tmpStream = new FileStream($"data/tmp", FileMode.Open);
+                bf.Serialize(fileStream, record);
+                tmpStream.CopyTo(fileStream);
+                fileStream.Close();
+                tmpStream.Close();
+                tmp.Delete();
+            }
             else if (addToEnd.Checked)
             {
-                stream.Seek(0, SeekOrigin.End);
-                stream.Write(arrtmp, 0, (int)tmp.Length);
+                FileStream file = new FileStream($"data/{filename}.fdb", FileMode.Append);
+                bf.Serialize(file, record);
+                file.Close();
             }
-            else return;
-            */
+            else
+            {
+
+            }
 
             DialogResult = DialogResult.OK;
-        }
-
-        private FileStream Serialize(Record record)
-        {
-            FileStream tmp = new FileStream("record.tmp", FileMode.Create);
-            BinaryFormatter bf = new BinaryFormatter();
-            bf.Serialize(stream, record);
-            return tmp;
         }
     }
 }

@@ -35,22 +35,6 @@ namespace LabLauncher.Lab8Dir
             }
         }
 
-        public string id
-        {
-            get
-            {
-                return $"{mm}.{year}-{unit}";
-            }
-        }
-
-        public string row
-        {
-            get
-            {
-                return $"{monthname} {year}, {unit}, €{profit}";
-            }
-        }
-
         public Record(month a, int b, string c, int prof)
         {
             mm = a;
@@ -59,9 +43,9 @@ namespace LabLauncher.Lab8Dir
             profit = prof;
         }
 
-        public static string getId(month a, int b, string c)
+        public override string ToString()
         {
-            return $"{a}.{b}-{c}";
+            return $"{monthname} {year}, {unit}, €{profit}";
         }
     }
 }

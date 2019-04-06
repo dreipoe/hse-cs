@@ -150,6 +150,11 @@ namespace HelloWorld
                 public int field;
                 public Item left;
                 public Item right;
+
+                public Item(int field)
+                {
+                    this.field = field;
+                }
             }
 
             private Item root;
@@ -187,11 +192,10 @@ namespace HelloWorld
 
             private static Item CreateIdealTree(int deep)
             {
-                return new Item {
-                    field = random.Next(-100, 100),
-                    left = (deep > 1) ? CreateIdealTree(deep - 1) : null,
-                    right = (deep > 1) ? CreateIdealTree(deep - 1) : null
-                };
+                Item current = new Item(random.Next(-100, 100));
+                current.left = (deep > 1) ? CreateIdealTree(deep - 1) : null;
+                current.right = (deep > 1) ? CreateIdealTree(deep - 1) : null;
+                return current;
             }
 
             private void ShowTree(Item current, int l)
@@ -216,50 +220,45 @@ namespace HelloWorld
                 return max;
             }
 
-            /*
             public BinaryTree GetSortedTree()
             {
-                BinaryTree sorted = new BinaryTree(field);
-                FetchElement(sorted);
+                BinaryTree sorted = new BinaryTree {
+                    root = new Item(root.field)
+                };
+                FetchElement(sorted, root);
                 return sorted;
             }
 
-            private void FetchElement(BinaryTree root)
+            private void FetchElement(BinaryTree sorted, Item current)
             {
-                Add(root, field);
-                if (left != null) left.FetchElement(root);
-                if (right != null) right.FetchElement(root);
+                sorted.Add(current.field);
+                if (current.left != null) FetchElement(sorted, current.left);
+                if (current.right != null) FetchElement(sorted, current.right);
             }
 
-            private static bool Add(BinaryTree root, int d)
+            //добавление элемента d в дерево поиска
+            private bool Add(int d)
             {
-                BinaryTree p = root;
-                BinaryTree r = null;
+                Item p = root;
+                Item r = null;
                 bool ok = false;
                 while (p != null && !ok)
                 {
                     r = p;
-                    if (d == p.field)
-                        ok = true;
-                    else if (d < p.field)
-                        p = p.left;
-                    else
-                        p = p.right;
+                    if (d == p.field) ok = true;
+                    else if (d < p.field) p = p.left;
+                    else p = p.right;
                 }
 
-                if (ok)
-                    return false;
+                if (ok) return false;
 
-                BinaryTree NewPoint = new BinaryTree(d);
+                Item NewPoint = new Item(d);
 
-                if (d < r.field)
-                    r.left = NewPoint;
-                else
-                    r.right = NewPoint;
+                if (d < r.field) r.left = NewPoint;
+                else r.right = NewPoint;
 
                 return true;
             }
-            */
         }
 
         public static void Run()
@@ -382,7 +381,7 @@ namespace HelloWorld
                         case "1": tree = BinaryTree.BornIdealTree(); break;
                         case "2": tree.Print(); break;
                         case "3": Console.WriteLine($"Маскимальное число в дереве: {tree.FindMaxNumber()}"); break;
-                        //case "4": tree = tree.GetSortedTree(); break;
+                        case "4": tree = tree.GetSortedTree(); break;
                         case "0": break;
                         default:
                             Console.WriteLine("Нет такого пункта в меню.");
