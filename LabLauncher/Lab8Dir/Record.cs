@@ -7,7 +7,6 @@ namespace LabLauncher.Lab8Dir
     {
         public enum month { jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec }
 
-        public int number { get; }
         public month mm { get; }
         public int year { get; }
         public string unit { get; }

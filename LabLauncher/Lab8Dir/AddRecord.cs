@@ -7,13 +7,13 @@ namespace LabLauncher.Lab8Dir
 {
     public partial class AddRecord : Form
     {
-        private string filename;
+        private Database db;
 
-        public AddRecord(string filename)
+        public AddRecord(Database db)
         {
             InitializeComponent();
-            monthField.SelectedIndex = 0;
-            this.filename = filename;
+            monthField.SelectedIndex++;
+            this.db = db;
         }
 
         //нажатие кнопки Добавить
@@ -35,29 +35,18 @@ namespace LabLauncher.Lab8Dir
 
             Record record = new Record((Record.month)month, year, unitField.Text, profit);
 
-            BinaryFormatter bf = new BinaryFormatter();
             if (addToBegin.Checked)
-            {
-                FileInfo file = new FileInfo($"data/{filename}.fdb");
-                FileInfo tmp = file.CopyTo("data/tmp");
-
-                FileStream fileStream = new FileStream($"data/{filename}.fdb", FileMode.Truncate);
-                FileStream tmpStream = new FileStream($"data/tmp", FileMode.Open);
-                bf.Serialize(fileStream, record);
-                tmpStream.CopyTo(fileStream);
-                fileStream.Close();
-                tmpStream.Close();
-                tmp.Delete();
-            }
+                db.Add(record);
             else if (addToEnd.Checked)
+                db.Push(record);
+            else if (!db.Add(record, (int)posField.Value))
             {
-                FileStream file = new FileStream($"data/{filename}.fdb", FileMode.Append);
-                bf.Serialize(file, record);
-                file.Close();
-            }
-            else
-            {
-
+                MessageBox.Show(
+                    "Не удалось добавить файл на указанную позицию.",
+                    "Добавить запись",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                ); return;
             }
 
             DialogResult = DialogResult.OK;

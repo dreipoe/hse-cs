@@ -78,6 +78,7 @@
             this.openFile.Name = "openFile";
             this.openFile.Size = new System.Drawing.Size(152, 22);
             this.openFile.Text = "Открыть";
+            this.openFile.Click += new System.EventHandler(this.CreateFile_Click);
             // 
             // toolStripMenuItem1
             // 

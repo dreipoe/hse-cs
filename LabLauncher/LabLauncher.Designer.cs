@@ -67,10 +67,11 @@
             // labList
             // 
             this.labList.FormattingEnabled = true;
-            this.labList.Items.AddRange(new string[] {
+            this.labList.Items.AddRange(new object[] {
             "Лабораторная работа №8",
             "Лабораторная работа №9",
             "Лабораторная работа №10",
+            "Лабораторная работа №11",
             "Тьюринг",
             "Марков",
             "Список"});

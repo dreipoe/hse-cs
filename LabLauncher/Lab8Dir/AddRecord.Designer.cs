@@ -218,9 +218,24 @@
             // posField
             // 
             this.posField.Location = new System.Drawing.Point(182, 123);
+            this.posField.Maximum = new decimal(new int[] {
+            2000000000,
+            0,
+            0,
+            0});
+            this.posField.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.posField.Name = "posField";
             this.posField.Size = new System.Drawing.Size(32, 20);
             this.posField.TabIndex = 19;
+            this.posField.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // AddRecord
             // 
