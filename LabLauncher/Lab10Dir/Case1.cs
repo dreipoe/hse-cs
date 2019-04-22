@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
 
+using LabLauncher.Entities;
+
 namespace LabLauncher.Lab10Dir
 {
     using education = Employee.education;

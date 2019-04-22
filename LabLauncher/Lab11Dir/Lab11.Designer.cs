@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.button1 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.numberField = new System.Windows.Forms.NumericUpDown();
+            this.Go = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.numberField)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -43,50 +43,51 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Выберите № задания:";
             // 
-            // numericUpDown1
+            // numberField
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(137, 7);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
+            this.numberField.Location = new System.Drawing.Point(137, 7);
+            this.numberField.Maximum = new decimal(new int[] {
             3,
             0,
             0,
             0});
-            this.numericUpDown1.Minimum = new decimal(new int[] {
+            this.numberField.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(40, 20);
-            this.numericUpDown1.TabIndex = 1;
-            this.numericUpDown1.Value = new decimal(new int[] {
+            this.numberField.Name = "numberField";
+            this.numberField.Size = new System.Drawing.Size(40, 20);
+            this.numberField.TabIndex = 1;
+            this.numberField.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
             // 
-            // button1
+            // Go
             // 
-            this.button1.Location = new System.Drawing.Point(183, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Вперёд";
-            this.button1.UseVisualStyleBackColor = true;
+            this.Go.Location = new System.Drawing.Point(183, 4);
+            this.Go.Name = "Go";
+            this.Go.Size = new System.Drawing.Size(75, 23);
+            this.Go.TabIndex = 2;
+            this.Go.Text = "Вперёд";
+            this.Go.UseVisualStyleBackColor = true;
+            this.Go.Click += new System.EventHandler(this.Go_Click);
             // 
             // Lab11
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 41);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.Go);
+            this.Controls.Add(this.numberField);
             this.Controls.Add(this.label1);
             this.MaximumSize = new System.Drawing.Size(300, 80);
             this.MinimumSize = new System.Drawing.Size(300, 80);
             this.Name = "Lab11";
             this.Text = "Лаб. работа №11";
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numberField)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -95,7 +96,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.NumericUpDown numberField;
+        private System.Windows.Forms.Button Go;
     }
 }

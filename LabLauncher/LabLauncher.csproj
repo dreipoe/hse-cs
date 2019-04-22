@@ -69,17 +69,17 @@
     <Compile Include="Brainfck\Program.Designer.cs">
       <DependentUpon>Program.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entities\Employee.cs" />
+    <Compile Include="Entities\Engineer.cs" />
+    <Compile Include="Entities\Person.cs" />
+    <Compile Include="Entities\Worker.cs" />
     <Compile Include="Lab10Dir\Case2.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Lab10Dir\Case2.Designer.cs">
       <DependentUpon>Case2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Lab10Dir\Classes\Employee.cs" />
-    <Compile Include="Lab10Dir\Classes\Engineer.cs" />
-    <Compile Include="Lab10Dir\Classes\Person.cs" />
     <Compile Include="Lab10Dir\Classes\PersonArray.cs" />
-    <Compile Include="Lab10Dir\Classes\Worker.cs" />
     <Compile Include="Lab10Dir\Interfaces\Employee.cs" />
     <Compile Include="Lab10Dir\Interfaces\Engineer.cs" />
     <Compile Include="Lab10Dir\Interfaces\Person.cs" />
@@ -105,6 +105,19 @@
     <Compile Include="Lab10Dir\Result.Designer.cs">
       <DependentUpon>Result.cs</DependentUpon>
     </Compile>
+    <Compile Include="Lab11Dir\AddPerson.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lab11Dir\AddPerson.Designer.cs">
+      <DependentUpon>AddPerson.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lab11Dir\Case1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lab11Dir\Case1.Designer.cs">
+      <DependentUpon>Case1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lab11Dir\Classes\PersonDictionary.cs" />
     <Compile Include="Lab11Dir\Lab11.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,6 +136,12 @@
     </Compile>
     <Compile Include="Lab8Dir\EditRecord.Designer.cs">
       <DependentUpon>EditRecord.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lab8Dir\MostProfitForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lab8Dir\MostProfitForm.Designer.cs">
+      <DependentUpon>MostProfitForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Lab8Dir\Record.cs" />
     <Compile Include="Lab9Dir\Lab9.cs">
@@ -218,6 +237,12 @@
     <EmbeddedResource Include="Lab10Dir\Result.resx">
       <DependentUpon>Result.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Lab11Dir\AddPerson.resx">
+      <DependentUpon>AddPerson.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lab11Dir\Case1.resx">
+      <DependentUpon>Case1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Lab11Dir\Lab11.resx">
       <DependentUpon>Lab11.cs</DependentUpon>
     </EmbeddedResource>
@@ -226,6 +251,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Lab8Dir\EditRecord.resx">
       <DependentUpon>EditRecord.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lab8Dir\MostProfitForm.resx">
+      <DependentUpon>MostProfitForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Lab9Dir\Lab9.resx">
       <DependentUpon>Lab9.cs</DependentUpon>

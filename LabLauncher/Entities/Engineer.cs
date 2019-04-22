@@ -1,4 +1,4 @@
-﻿namespace LabLauncher.Lab10Dir
+﻿namespace LabLauncher.Entities
 {
     public class Engineer : Employee
     {

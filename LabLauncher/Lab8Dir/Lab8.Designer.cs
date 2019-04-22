@@ -35,8 +35,8 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.Close = new System.Windows.Forms.ToolStripMenuItem();
             this.доходыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.самыйПрибыльныйГодToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.самыйДлинныйПериодСНизкимиДоходамиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mostProfitYearItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mostLongLowCostItem = new System.Windows.Forms.ToolStripMenuItem();
             this.append = new System.Windows.Forms.Button();
             this.edit = new System.Windows.Forms.Button();
             this.delete = new System.Windows.Forms.Button();
@@ -69,49 +69,51 @@
             // createFile
             // 
             this.createFile.Name = "createFile";
-            this.createFile.Size = new System.Drawing.Size(152, 22);
+            this.createFile.Size = new System.Drawing.Size(121, 22);
             this.createFile.Text = "Создать";
             this.createFile.Click += new System.EventHandler(this.CreateFile_Click);
             // 
             // openFile
             // 
             this.openFile.Name = "openFile";
-            this.openFile.Size = new System.Drawing.Size(152, 22);
+            this.openFile.Size = new System.Drawing.Size(121, 22);
             this.openFile.Text = "Открыть";
             this.openFile.Click += new System.EventHandler(this.CreateFile_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(118, 6);
             // 
             // Close
             // 
             this.Close.Name = "Close";
-            this.Close.Size = new System.Drawing.Size(152, 22);
+            this.Close.Size = new System.Drawing.Size(121, 22);
             this.Close.Text = "Выход";
             this.Close.Click += new System.EventHandler(this.Close_Click);
             // 
             // доходыToolStripMenuItem
             // 
             this.доходыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.самыйПрибыльныйГодToolStripMenuItem,
-            this.самыйДлинныйПериодСНизкимиДоходамиToolStripMenuItem});
+            this.mostProfitYearItem,
+            this.mostLongLowCostItem});
             this.доходыToolStripMenuItem.Name = "доходыToolStripMenuItem";
             this.доходыToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.доходыToolStripMenuItem.Text = "Доходы";
             // 
-            // самыйПрибыльныйГодToolStripMenuItem
+            // mostProfitYearItem
             // 
-            this.самыйПрибыльныйГодToolStripMenuItem.Name = "самыйПрибыльныйГодToolStripMenuItem";
-            this.самыйПрибыльныйГодToolStripMenuItem.Size = new System.Drawing.Size(325, 22);
-            this.самыйПрибыльныйГодToolStripMenuItem.Text = "Самый прибыльный год";
+            this.mostProfitYearItem.Name = "mostProfitYearItem";
+            this.mostProfitYearItem.Size = new System.Drawing.Size(325, 22);
+            this.mostProfitYearItem.Text = "Самый прибыльный год";
+            this.mostProfitYearItem.Click += new System.EventHandler(this.mostProfitYearItem_Click);
             // 
-            // самыйДлинныйПериодСНизкимиДоходамиToolStripMenuItem
+            // mostLongLowCostItem
             // 
-            this.самыйДлинныйПериодСНизкимиДоходамиToolStripMenuItem.Name = "самыйДлинныйПериодСНизкимиДоходамиToolStripMenuItem";
-            this.самыйДлинныйПериодСНизкимиДоходамиToolStripMenuItem.Size = new System.Drawing.Size(325, 22);
-            this.самыйДлинныйПериодСНизкимиДоходамиToolStripMenuItem.Text = "Самый длинный период с низкими доходами";
+            this.mostLongLowCostItem.Name = "mostLongLowCostItem";
+            this.mostLongLowCostItem.Size = new System.Drawing.Size(325, 22);
+            this.mostLongLowCostItem.Text = "Самый длинный период с низкими доходами";
+            this.mostLongLowCostItem.Click += new System.EventHandler(this.mostLongLowCostItem_Click);
             // 
             // append
             // 
@@ -188,8 +190,8 @@
         private System.Windows.Forms.ToolStripMenuItem Close;
         private System.Windows.Forms.Button append;
         private System.Windows.Forms.ToolStripMenuItem доходыToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem самыйПрибыльныйГодToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem самыйДлинныйПериодСНизкимиДоходамиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mostProfitYearItem;
+        private System.Windows.Forms.ToolStripMenuItem mostLongLowCostItem;
         private System.Windows.Forms.Button edit;
         private System.Windows.Forms.Button delete;
         private System.Windows.Forms.ListBox recordList;

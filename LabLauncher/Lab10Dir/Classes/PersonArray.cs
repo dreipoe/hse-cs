@@ -1,4 +1,6 @@
-﻿namespace LabLauncher.Lab10Dir
+﻿using LabLauncher.Entities;
+
+namespace LabLauncher.Lab10Dir
 {
     public class PersonArray
     {

@@ -16,5 +16,25 @@ namespace LabLauncher.Lab11Dir
         {
             InitializeComponent();
         }
+
+        private void Go_Click(object sender, EventArgs e)
+        {
+            switch ((int)numberField.Value)
+            {
+                case 1:
+                    break;
+                case 2:
+                case 3:
+                    break;
+                default:
+                    MessageBox.Show(
+                        "Нет такого задания",
+                        "Лаб. работа №11",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error
+                    );
+                    break;
+            }
+        }
     }
 }

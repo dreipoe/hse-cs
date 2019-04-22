@@ -70,8 +70,6 @@
     <Compile Include="Lab5.cs" />
     <Compile Include="Lab6.cs" />
     <Compile Include="Lab7.cs" />
-    <Compile Include="Lab8\Lab8.cs" />
-    <Compile Include="Lab8\Record.cs" />
     <Compile Include="Lib.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

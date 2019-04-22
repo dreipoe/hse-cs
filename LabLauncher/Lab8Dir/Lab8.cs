@@ -53,7 +53,6 @@ namespace LabLauncher.Lab8Dir
         private void Append_Click(object sender, EventArgs e)
         {
             AddRecord addrecord = new AddRecord(db);
-
             if (addrecord.ShowDialog() == DialogResult.OK) recordList.DataSource = db.Show();
         }
 
@@ -61,9 +60,7 @@ namespace LabLauncher.Lab8Dir
         {
             int number = recordList.SelectedIndex;
             if (number == -1) return;
-
             EditRecord editrecord = new EditRecord(db, number);
-
             if (editrecord.ShowDialog() == DialogResult.OK) recordList.DataSource = db.Show();
         }
 
@@ -85,13 +82,16 @@ namespace LabLauncher.Lab8Dir
             }
         }
 
-        //TODO: В целях отладки, рабочий файл будет автоматически удаляться при закрытии программы
-        private void Lab8_FormClosed(object sender, FormClosedEventArgs e)
+        private void Lab8_FormClosed(object sender, FormClosedEventArgs e) { }
+
+        private void mostProfitYearItem_Click(object sender, EventArgs e)
         {
-            /*
-            FileInfo delete = new FileInfo($"data/{db.Name}.fdb");
-            delete.Delete();
-            */
+            //TODO: Самые прибыльные годы каждого подразделения
+        }
+
+        private void mostLongLowCostItem_Click(object sender, EventArgs e)
+        {
+            //TODO: Наиболее длинный период каждого подразделения с доходом ниже среднего по всей фирме
         }
     }
 }
