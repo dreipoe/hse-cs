@@ -7,6 +7,14 @@
         public string shop { get; protected set; }
         public string position { get; protected set; }
 
+        public Person Base
+        {
+            get
+            {
+                return new Person(FIO, age);
+            }
+        }
+
         public Worker(string FIO, string pos, byte c, int salary, int experience) : base(FIO, c)
         {
             if (!__construct(pos, salary, experience)) return;

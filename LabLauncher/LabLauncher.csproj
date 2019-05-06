@@ -71,7 +71,15 @@
     </Compile>
     <Compile Include="Entities\Employee.cs" />
     <Compile Include="Entities\Engineer.cs" />
+    <Compile Include="Entities\PersonComparer.cs" />
     <Compile Include="Entities\Person.cs" />
+    <Compile Include="Lab12Dir\AddPerson.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lab12Dir\AddPerson.Designer.cs">
+      <DependentUpon>AddPerson.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lab12Dir\TestCollections.cs" />
     <Compile Include="Entities\Worker.cs" />
     <Compile Include="Lab10Dir\Case2.cs">
       <SubType>Form</SubType>
@@ -117,13 +125,45 @@
     <Compile Include="Lab11Dir\Case1.Designer.cs">
       <DependentUpon>Case1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Lab11Dir\Classes\PersonDictionary.cs" />
+    <Compile Include="Lab11Dir\Case1Print.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lab11Dir\Case1Print.Designer.cs">
+      <DependentUpon>Case1Print.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lab11Dir\Case2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lab11Dir\Case2.Designer.cs">
+      <DependentUpon>Case2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lab11Dir\Case3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lab11Dir\Case3.Designer.cs">
+      <DependentUpon>Case3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lab11Dir\Classes\PersonHashtable.cs" />
     <Compile Include="Lab11Dir\Lab11.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Lab11Dir\Lab11.Designer.cs">
       <DependentUpon>Lab11.cs</DependentUpon>
     </Compile>
+    <Compile Include="Lab12Dir\Lab12.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lab12Dir\Lab12.Designer.cs">
+      <DependentUpon>Lab12.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lab12Dir\TestCollectionsException.cs" />
+    <Compile Include="Lab13Dir\Lab13.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lab13Dir\Lab13.Designer.cs">
+      <DependentUpon>Lab13.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lab13Dir\MyList.cs" />
     <Compile Include="Lab8Dir\AddRecord.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -243,8 +283,26 @@
     <EmbeddedResource Include="Lab11Dir\Case1.resx">
       <DependentUpon>Case1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Lab11Dir\Case1Print.resx">
+      <DependentUpon>Case1Print.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lab11Dir\Case2.resx">
+      <DependentUpon>Case2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lab11Dir\Case3.resx">
+      <DependentUpon>Case3.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Lab11Dir\Lab11.resx">
       <DependentUpon>Lab11.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lab12Dir\AddPerson.resx">
+      <DependentUpon>AddPerson.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lab12Dir\Lab12.resx">
+      <DependentUpon>Lab12.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lab13Dir\Lab13.resx">
+      <DependentUpon>Lab13.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Lab8Dir\AddRecord.resx">
       <DependentUpon>AddRecord.cs</DependentUpon>
@@ -299,6 +357,7 @@
       <DependentUpon>Program.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

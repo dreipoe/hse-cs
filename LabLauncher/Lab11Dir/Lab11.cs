@@ -21,19 +21,16 @@ namespace LabLauncher.Lab11Dir
         {
             switch ((int)numberField.Value)
             {
-                case 1:
-                    break;
-                case 2:
-                case 3:
-                    break;
+                case 1: new Case1().Show(); break;
+                case 2: new Case2().Show(); break;
+                case 3: break;
                 default:
                     MessageBox.Show(
                         "Нет такого задания",
-                        "Лаб. работа №11",
+                        "Лаб. №11",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error
-                    );
-                    break;
+                    ); break;
             }
         }
     }

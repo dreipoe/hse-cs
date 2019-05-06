@@ -64,33 +64,41 @@ namespace LabLauncher.Lab11Dir
 
         private void close_Click(object sender, EventArgs e) { Close(); }
 
-        private void checkChanged()
+        private void checkChanged(object sender, EventArgs e)
         {
             if (personCheck.Checked)
             {
-                salaryField.Enabled = ageField.Enabled = shopField.Enabled =
+                salaryField.Enabled = expField.Enabled = shopField.Enabled =
                 posField.Enabled = eduCombo.Enabled = categoryField.Enabled = false;
             }
             else if (workerCheck.Checked)
             {
-                salaryField.Enabled = ageField.Enabled = shopField.Enabled =
+                salaryField.Enabled = expField.Enabled = shopField.Enabled =
                 posField.Enabled = true;
                 eduCombo.Enabled = categoryField.Enabled = false;
             }
             else if (empCheck.Checked)
             {
-                salaryField.Enabled = ageField.Enabled = shopField.Enabled =
+                salaryField.Enabled = expField.Enabled = shopField.Enabled =
                 posField.Enabled = eduCombo.Enabled = true;
                 categoryField.Enabled = false;
             }
             else
             {
-                //инженер
-                salaryField.Enabled = ageField.Enabled = shopField.Enabled =
+                salaryField.Enabled = expField.Enabled = shopField.Enabled =
                 posField.Enabled = eduCombo.Enabled = categoryField.Enabled = true;
             }
         }
 
-        private void ShowError(byte code) { }
+        private void ShowError(byte code)
+        {
+            string message = string.Empty;
+            switch (code)
+            {
+                case 1: message = "Заполните ФИО"; break;
+                case 2: message = "Заполните должность"; break;
+            }
+            MessageBox.Show(message, "Лаб. №11", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
     }
 }

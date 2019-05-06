@@ -5,6 +5,8 @@ namespace HelloWorld
 {
     class Lab3
     {
+        // TODO: Что-то здесь не так
+
         public static void Run()
         {
             WriteLine("Циклическое вычисление:");
@@ -15,22 +17,23 @@ namespace HelloWorld
 
             for (double x = a; x <= b; x += step)
             {
-                //инициализируем переменные сразу первым членом, чтобы избежать пустой операции умножения/деления на 1.
-                double sn = Cos(x), se = sn;
+                //инициализируем переменные сразу первым членом
+                double sn = Cos(x), se = sn, pre = se;
                 int n;
 
-                double member;
                 for (n = 2; n <= 40; n++)
                     sn += Cos(n * x) / n;
 
                 n = 2;
+                double r;
 
                 do
                 {
-                    member = Cos(n * x) / n;
-                    se += member;
+                    se += Cos(n * x) / n;
+                    r = Abs(se - pre);
+                    pre = se;
                     n++;
-				} while (1 / n > 0.0001); //исключим преждевременный выход из цикла, если синусоида окажется слишком близко к нулю
+				} while (r > 0.0001);
 
                 double y = -Log(
                                 Abs(
