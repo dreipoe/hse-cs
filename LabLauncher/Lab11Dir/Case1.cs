@@ -57,7 +57,12 @@ namespace LabLauncher.Lab11Dir
         {
             if (personList.SelectedItem == null) return;
 
-            DialogResult delete = MessageBox.Show("Вы действительно хотите удалить этот элемент?", "Лаб. работа №11", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult delete = MessageBox.Show(
+                "Вы действительно хотите удалить этот элемент?",
+                "Лаб. работа №11",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
 
             if (delete == DialogResult.Yes)
             {

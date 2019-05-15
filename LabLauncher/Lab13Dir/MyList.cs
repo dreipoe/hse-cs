@@ -21,7 +21,7 @@ namespace LabLauncher.Lab13Dir
             }
         }
 
-        public void Init()
+        public virtual void AddDefaults()
         {
             Add(new Person("Габриэль Мэйсон", 51));
             Add(new Person("Бойкова Нона Семеновна", 61));

@@ -44,6 +44,7 @@ namespace LabLauncher.Lab10Dir
 
         private void closeMe_Click(object sender, EventArgs e) { Close(); }
 
+        //окно с подробной информацией. Корректно работает, если отмечен флажок Virtual Mode
         private void more_Click(object sender, EventArgs e)
         {
             if (personList.SelectedIndex == -1) return;
@@ -59,6 +60,7 @@ namespace LabLauncher.Lab10Dir
             );
         }
 
+        //три запроса
         private void runButton_Click(object sender, EventArgs e)
         {
             string names = string.Empty;

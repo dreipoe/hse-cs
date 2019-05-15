@@ -1,7 +1,7 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Windows.Forms;
-
-using LabLauncher.Entities;
 
 namespace LabLauncher.TestDir
 {
@@ -10,6 +10,12 @@ namespace LabLauncher.TestDir
         public Test()
         {
             InitializeComponent();
+            Script();
+        }
+
+        private void Script()
+        {
+
         }
     }
 }

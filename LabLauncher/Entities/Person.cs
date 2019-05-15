@@ -2,8 +2,8 @@
 {
     public class Person
     {
-        protected string FIO;
-        protected byte age;
+        public string FIO { get; protected set; }
+        public byte age { get; protected set; }
 
         public Person(string FIO, byte c)
         {

@@ -4,13 +4,27 @@ namespace LabLauncher.Lab10Dir
 {
     public class PersonArray
     {
-        public Person[] array { get; protected set; }
+        protected Person[] array { get; set; }
 
         public PersonArray(Person[] persons)
         {
             array = persons;
         }
 
+        public Person this[int i]
+        {
+            get
+            {
+                return array[i];
+            }
+
+            set
+            {
+                array[i] = value;
+            }
+        }
+
+        //служащие со стажем не менее min лет
         public string selectEmpWithExpNotLessThan(int min)
         {
             string tmp = string.Empty;
@@ -24,6 +38,7 @@ namespace LabLauncher.Lab10Dir
             return tmp;
         }
 
+        //служащие с должностью pos
         public string selectEmpWithThePos(string pos)
         {
             string tmp = string.Empty;
@@ -38,6 +53,7 @@ namespace LabLauncher.Lab10Dir
             return tmp;
         }
 
+        //рабочие из цеха shop
         public string workerFromThe(string shop)
         {
             string tmp = string.Empty;

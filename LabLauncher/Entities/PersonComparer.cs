@@ -7,7 +7,7 @@ namespace LabLauncher.Entities
     {
         int IComparer.Compare(object a, object b)
         {
-            if (a is Person && b is Person)
+            if ((a is Person) && (b is Person))
                 return string.Compare(a.ToString(), b.ToString());
             else
                 throw new Exception("Оба аргумента должны иметь тип Person");

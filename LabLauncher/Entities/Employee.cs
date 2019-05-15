@@ -3,7 +3,7 @@
     public class Employee : Worker
     {
         public enum education { secondary, secondarySpecial, higherIncomplete, higher, postgraduate }
-        protected education edu;
+        public education edu { get; protected set; }
 
         public Employee(string FIO, string pos, byte c, int salary, int experience, education edu) : base(FIO, pos, c, salary, experience)
         {

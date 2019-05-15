@@ -2,7 +2,7 @@
 {
     public class Worker : Person
     {
-        protected int salary;
+        public int salary { get; protected set; }
         public byte experience { get; protected set; }
         public string shop { get; protected set; }
         public string position { get; protected set; }

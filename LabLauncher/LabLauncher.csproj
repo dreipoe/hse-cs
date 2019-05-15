@@ -71,6 +71,8 @@
     </Compile>
     <Compile Include="Entities\Employee.cs" />
     <Compile Include="Entities\Engineer.cs" />
+    <Compile Include="Entities\PersonComparers\PersonCompareByString.cs" />
+    <Compile Include="Entities\PersonComparers\PersonCompareByAge.cs" />
     <Compile Include="Entities\PersonComparer.cs" />
     <Compile Include="Entities\Person.cs" />
     <Compile Include="Lab12Dir\AddPerson.cs">
@@ -143,7 +145,7 @@
     <Compile Include="Lab11Dir\Case3.Designer.cs">
       <DependentUpon>Case3.cs</DependentUpon>
     </Compile>
-    <Compile Include="Lab11Dir\Classes\PersonHashtable.cs" />
+    <Compile Include="Lab11Dir\Classes\Hashtable.cs" />
     <Compile Include="Lab11Dir\Lab11.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -157,13 +159,29 @@
       <DependentUpon>Lab12.cs</DependentUpon>
     </Compile>
     <Compile Include="Lab12Dir\TestCollectionsException.cs" />
+    <Compile Include="Lab13Dir\AddPerson.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lab13Dir\AddPerson.Designer.cs">
+      <DependentUpon>AddPerson.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lab13Dir\Journal.cs" />
     <Compile Include="Lab13Dir\Lab13.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Lab13Dir\Lab13.Designer.cs">
       <DependentUpon>Lab13.cs</DependentUpon>
     </Compile>
+    <Compile Include="Lab13Dir\ListHandlerEventArgs.cs" />
     <Compile Include="Lab13Dir\MyList.cs" />
+    <Compile Include="Lab13Dir\MyNewList.cs" />
+    <Compile Include="Lab14Dir\Lab14.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lab14Dir\Lab14.Designer.cs">
+      <DependentUpon>Lab14.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lab14Dir\ShopDictionary.cs" />
     <Compile Include="Lab8Dir\AddRecord.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -301,8 +319,14 @@
     <EmbeddedResource Include="Lab12Dir\Lab12.resx">
       <DependentUpon>Lab12.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Lab13Dir\AddPerson.resx">
+      <DependentUpon>AddPerson.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Lab13Dir\Lab13.resx">
       <DependentUpon>Lab13.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lab14Dir\Lab14.resx">
+      <DependentUpon>Lab14.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Lab8Dir\AddRecord.resx">
       <DependentUpon>AddRecord.cs</DependentUpon>
